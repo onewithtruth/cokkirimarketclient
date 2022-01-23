@@ -166,7 +166,7 @@ const Login = ({
   return (
     <main>
       <LoginContainer onSubmit={(e) => e.preventDefault()}>
-        <LoginTitle>LOGIN</LoginTitle>
+        <LoginTitle>LOGIN2</LoginTitle>
 
         <LoginInputContainer>
           <LoginInput

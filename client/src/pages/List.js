@@ -20,6 +20,7 @@ function List({ isLogin, accessToken }) {
     axios(options)
       .then((res) => {
         setPostList(res.data.data);
+        console.log(res.data.data);
       })
       .catch();
   };
