@@ -38,10 +38,10 @@ function Header() {
   return (
     <HeaderWrapper>
       <Wrapper>
-        <Icon src='./icons/arrow-small-left.png' onClick={() => navigate(-1)} />
+        <Icon src='/icons/arrow-small-left.png' onClick={() => navigate(-1)} />
       </Wrapper>
       <LogoWrapper>
-        <Icon src='./icons/elephant.png' onClick={() => navigate('/')} />
+        <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
       </LogoWrapper>
     </HeaderWrapper>
   );
