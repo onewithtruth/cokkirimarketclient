@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -141,6 +141,17 @@ const MyEdit = ({ isLogin, accessToken }) => {
   );
 };
 export default MyEdit;
+
+const layout = css`
+  width: ${({ width }) => (width && `${width}`) || '100%'};
+  height: ${({ height }) => (height && `${height}`) || `1px`};
+  padding: 0.5rem;
+`;
+
+const Main = styled.main`
+  ${layout}
+  background-color: ${({ theme }) => theme.colors.grey_light};
+`;
 
 export const EditContainer = styled.div`
   display: flex;
