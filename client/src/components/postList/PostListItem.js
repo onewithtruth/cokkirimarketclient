@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Modal } from '../common/Modal';
 
 const StLink = styled(Link)`
   all: unset;
@@ -41,16 +42,27 @@ const PostTitle = styled.h2`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.blue_dark};
 `;
 
+const PostCategory = styled.span`
+  color: ${({ theme }) => theme.colors.grey_dark};
+  font-size: 0.8rem;
+`;
+
 const PostPrice = styled.span`
   color: ${({ theme }) => theme.colors.blue_dark};
+  font-size: 1.2rem;
+  font-weight: 700;
 `;
 
 function PostListItem({ info }) {
+  const category = info.post_has_categories[0]
+    ? info.post_has_categories[0].category.category
+    : '없음';
+
   return (
     <StLink to={`/list/${info.id}`}>
       <PostItemWrapper>
@@ -59,15 +71,13 @@ function PostListItem({ info }) {
         />
         <PostInfo>
           <PostTitle>{info.title}</PostTitle>
-          <PostPrice>
-            {info.post_has_categories[0] &&
-              info.post_has_categories[0].category.category}
-          </PostPrice>
-          <PostPrice>{info.price + '원'}</PostPrice>
+          <PostCategory>{category}</PostCategory>
+          <PostPrice>{info.price + ' 원'}</PostPrice>
         </PostInfo>
       </PostItemWrapper>
     </StLink>
   );
 }
 
+//
 export default PostListItem;

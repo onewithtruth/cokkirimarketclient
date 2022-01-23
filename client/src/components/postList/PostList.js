@@ -14,9 +14,13 @@ const PostListWrapper = styled.ul`
 function PostList({ posts }) {
   return (
     <PostListWrapper>
-      {posts.map((post) => {
-        return <PostListItem key={post.id} info={post} />;
-      })}
+      {posts.length > 0 ? (
+        posts.map((post) => {
+          return <PostListItem key={post.id} info={post} />;
+        })
+      ) : (
+        <li>아무것도 없어요</li>
+      )}
     </PostListWrapper>
   );
 }

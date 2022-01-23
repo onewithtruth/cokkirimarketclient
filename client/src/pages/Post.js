@@ -51,12 +51,9 @@ function Post({ isLogin, accessToken, userId }) {
       }
     };
 
-    axios(options)
-      .then((res) => {
-        console.log(res);
-        navigate('/');
-      })
-      .catch(console.log);
+    axios(options).then((res) => {
+      navigate('/', { replace: true });
+    });
   };
 
   const patchPost = () => {
