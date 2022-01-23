@@ -65,7 +65,8 @@ const Login = ({
   };
 
   const socialLoginHandler = (key) => (e) => {
-    const redirectUri = 'https://localhost:3000/login';
+    const redirectUri =
+      'http://practice-bucket-deploy-01.s3-website.ap-northeast-2.amazonaws.com/login';
     if (key === 'github') {
       const githubclientId = '84a0db73c9e6deeb8373';
       const GITHUB_LOGIN_URL = `https://github.com/login/oauth/authorize?client_id=${githubclientId}&redirect_uri=${redirectUri}`;
