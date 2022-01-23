@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -18,9 +18,9 @@ export const MyPageContainer = styled.div`
 
 export const MyPageTitle = styled.div`
   margin-bottom: 20px;
-  color : #636363;
+  color: #636363;
   font-family: Nanum Barun Gothic;
-  font-size : 40px;
+  font-size: 40px;
   font-weight: bold;
 `;
 
@@ -31,16 +31,16 @@ export const MyPageMenu = styled.div`
   border: 3px solid #eeeeee;
   /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: white;
-  padding: 2px; 
+  padding: 2px;
   margin: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 50px;
   text-align: center;
-  color : #4f4f4f;
+  color: #4f4f4f;
   font-family: Nanum Barun Gothic;
-  font-size : 15px;
+  font-size: 15px;
   font-weight: bold;
 `;
 
@@ -63,75 +63,67 @@ export const MyMenuIcon = styled.img`
   height: 28px;
 `;
 
-const MyPage = ({ isLogin, setIsLogin, setUserInfo, userInfo, handleLogout, accessToken, setAccessToken }) => {
+const MyPage = ({
+  isLogin,
+  setIsLogin,
+  setUserInfo,
+  userInfo,
+  handleLogout,
+  accessToken,
+  setAccessToken
+}) => {
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    if(isLogin===false) navigate('/login')
-  }, [isLogin, navigate])
-  
-  const handleSignout = () => {
 
-    axios.delete("https://api.cokkirimarket.xyz/user/delete", {
-      headers: {
-        "Authorization" : "Bearer "+ accessToken
-      }
-    })
+  useEffect(() => {
+    if (isLogin === false) navigate('/login');
+  }, [isLogin, navigate]);
+
+  const handleSignout = () => {
+    axios
+      .delete('https://api.cokkirimarket.xyz/user/delete', {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      })
       .then((res) => {
         setUserInfo(null);
         setIsLogin(false);
-        setAccessToken('')
-        navigate('/login')
-        console.log('signout 성공')
+        setAccessToken('');
+        navigate('/login');
       })
-      .catch((err) => {
-        console.log('signout 실패')
-    });
-
-
-  }
+      .catch((err) => {});
+  };
 
   return (
     <main>
-    <MyPageContainer>
-    {accessToken}      
-      <MyPageTitle>My Page</MyPageTitle>
-      <MyPageId>{userInfo} 님 환영합니다</MyPageId>
+      <MyPageContainer>
+        <MyPageTitle>My Page</MyPageTitle>
+        <MyPageId>{userInfo} 님 환영합니다</MyPageId>
 
-      <Link to='/myposts' style={{ textDecoration: 'none' }}>
-      <MyPageMenu>
-        <MyMenuIcon src="/icons/mygoods.png" />
-        나의 판매내역
-      </MyPageMenu>
-      </Link>
+        <Link to='/myposts' style={{ textDecoration: 'none' }}>
+          <MyPageMenu>
+            <MyMenuIcon src='/icons/mygoods.png' />
+            나의 판매내역
+          </MyPageMenu>
+        </Link>
 
+        <Link to='/myedit' style={{ textDecoration: 'none' }}>
+          <MyPageMenu>
+            <MyMenuIcon src='/icons/correct.png' />
+            나의 정보수정
+          </MyPageMenu>
+        </Link>
 
+        <MyPageMenu onClick={handleLogout}>
+          <MyMenuIcon src='/icons/logout.png' />
+          로그아웃 하기
+        </MyPageMenu>
 
-      <Link to='/myedit' style={{ textDecoration: 'none' }}>
-      <MyPageMenu>
-        <MyMenuIcon src="/icons/correct.png" />
-        나의 정보수정
-      </MyPageMenu>
-      </Link>
-
-
-
-      <MyPageMenu
-        onClick={handleLogout}
-      >
-      <MyMenuIcon src="/icons/logout.png" />
-        로그아웃 하기
-      </MyPageMenu>
-
-
-
-      <MyPageMenu
-       onClick={handleSignout}
-      >
-        <MyMenuIcon src="/icons/cancel.png" />
-        회원탈퇴 하기
-      </MyPageMenu>
-    </MyPageContainer>
+        <MyPageMenu onClick={handleSignout}>
+          <MyMenuIcon src='/icons/cancel.png' />
+          회원탈퇴 하기
+        </MyPageMenu>
+      </MyPageContainer>
     </main>
   );
 };

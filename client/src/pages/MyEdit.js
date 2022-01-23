@@ -74,8 +74,6 @@ const MyEdit = ({ isLogin, accessToken }) => {
 
     axios(options)
       .then((res) => {
-        console.log(res);
-        console.log(res.status);
         navigate('/mypage');
       })
       .catch(function (error) {
@@ -143,3 +141,15 @@ const MyEdit = ({ isLogin, accessToken }) => {
   );
 };
 export default MyEdit;
+
+export const EditContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 90vh;
+  position: fixed;
+  bottom: 0;
+`;

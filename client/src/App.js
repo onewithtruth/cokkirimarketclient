@@ -36,9 +36,7 @@ function App() {
         }
       })
       .then((res) => {})
-      .catch((err) => {
-        console.log('logout 실패');
-      });
+      .catch((err) => {});
   };
 
   const getUserInfo = (token) => {
