@@ -82,8 +82,7 @@ const MyPage = ({
     axios
       .delete('https://api.cokkirimarket.xyz/user', {
         headers: {
-          Authorization: 'Bearer ' + accessToken,
-          'Content-Type': 'application/json'
+          Authorization: 'Bearer ' + accessToken
         },
         withCredentials: true
       })
@@ -102,7 +101,7 @@ const MyPage = ({
   return (
     <main>
       <MyPageContainer>
-        <MyPageTitle>My Page</MyPageTitle>
+        <MyPageTitle>My Page3</MyPageTitle>
         <MyPageId>{userInfo} 님 환영합니다</MyPageId>
 
         <Link to='/myposts' style={{ textDecoration: 'none' }}>
