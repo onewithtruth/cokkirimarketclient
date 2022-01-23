@@ -98,7 +98,7 @@ const MyEdit = ({ isLogin, accessToken }) => {
       });
   };
   return (
-    <main>
+    <Main height='90vh'>
       <JoinContainer>
         <JoinTitle>EDIT</JoinTitle>
         <form onSubmit={(e) => e.preventDefault()}>
@@ -137,7 +137,7 @@ const MyEdit = ({ isLogin, accessToken }) => {
           정보수정
         </JoinBtn>
       </JoinContainer>
-    </main>
+    </Main>
   );
 };
 export default MyEdit;

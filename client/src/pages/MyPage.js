@@ -80,18 +80,23 @@ const MyPage = ({
 
   const handleSignout = () => {
     axios
-      .delete('https://api.cokkirimarket.xyz/user/delete', {
+      .delete('https://api.cokkirimarket.xyz/user', {
         headers: {
-          Authorization: 'Bearer ' + accessToken
-        }
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
       })
       .then((res) => {
+        console.log(res);
         setUserInfo(null);
         setIsLogin(false);
         setAccessToken('');
         navigate('/login');
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
