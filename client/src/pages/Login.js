@@ -17,7 +17,6 @@ const Login = ({
   useEffect(() => {
     let url = new URL(window.location.href);
     let authorizationCode = url.searchParams.get('code');
-    console.log('authorizationCode', authorizationCode);
     if (authorizationCode) {
       console.log('코드있음');
       handleGithubLogin(authorizationCode);
@@ -90,7 +89,6 @@ const Login = ({
     const options = {
       method: 'POST',
       url: 'https://dev.cokkiriserver.xyz/oauth/oauthgithub',
-      // url: "http://localhost:80/oauth/oauthgithub",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -100,12 +98,9 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
-        console.log(userInfo);
-        console.log(accessToken);
         navigate('/mypage');
         getUserInfo(response.data.data.accessToken);
       })
@@ -125,14 +120,10 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
-        console.log(userInfo);
-        console.log(accessToken);
         navigate('/mypage');
-        console.log('토큰 확인', response.data);
         getUserInfo(response.data.data.accessToken);
       })
       .catch((err) => null);
@@ -151,12 +142,9 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
-        console.log(userInfo);
-        console.log(accessToken);
         navigate('/mypage');
         getUserInfo(response.data.data.accessToken);
       })
@@ -166,7 +154,7 @@ const Login = ({
   return (
     <main>
       <LoginContainer onSubmit={(e) => e.preventDefault()}>
-        <LoginTitle>LOGIN2</LoginTitle>
+        <LoginTitle>LOGIN</LoginTitle>
 
         <LoginInputContainer>
           <LoginInput
@@ -211,7 +199,7 @@ const Login = ({
 
 export default Login;
 
-export const LoginContainer = styled.form`
+export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -229,6 +217,7 @@ export const LoginTitle = styled.div`
   font-family: Nanum Barun Gothic;
   font-size: 40px;
   font-weight: bold;
+  cursor: none;
 `;
 
 export const LoginInputContainer = styled.div`

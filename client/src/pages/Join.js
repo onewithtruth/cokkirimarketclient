@@ -24,6 +24,12 @@ const Join = () => {
   const [passwordErrMsg, setPasswordErrMsg] = useState('');
   const [passwordReErrMsg, setPasswordReErrMsg] = useState('');
 
+  const [showModal, setShowModal] = useState(false);
+
+  const modalHandler = () => {
+    setShowModal(!showModal);
+  };
+
   const chDuplicated = () => {
     const options = {
       method: 'get',
@@ -100,7 +106,6 @@ const Join = () => {
     if (pw !== '' && pwRe !== '' && pw !== pwRe)
       return setErrorMessage('동일한 비밀번호를 입력하세요');
 
-    console.log('여기까지 왔나?');
     const data = {
       email: email,
       user_id: id,
@@ -115,8 +120,7 @@ const Join = () => {
 
     axios(options)
       .then((res) => {
-        console.log(res);
-        console.log(res.status);
+        modalHandler();
         navigate('/login');
       })
       .catch(function (error) {
@@ -191,7 +195,7 @@ const Join = () => {
             />
           </JoinInputContainer>
         </form>
-        <JoinLine />
+        {/* <JoinLine /> */}
         <ErrorMsgLast>{errorMessage}</ErrorMsgLast>
         <JoinBtn type='submit' onClick={handleJoin}>
           회원가입
@@ -208,7 +212,7 @@ export const JoinContainer = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   bottom: 0;
 `;
@@ -236,7 +240,6 @@ export const IdDuplicatedBtn = styled.div`
   height: 40px;
   border-radius: 20px;
   border: 2px solid #6793e6;
-  /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: #6793e6;
   padding: 2px;
   margin-top: 10px;
@@ -255,7 +258,6 @@ export const JoinInputContainer = styled.div`
   height: 40px;
   border-radius: 20px;
   border: 2px solid #eeeeee;
-
   background-color: white;
   padding: 2px;
   margin: 5px;
@@ -310,7 +312,6 @@ export const JoinBtn = styled.div`
   height: 40px;
   border-radius: 20px;
   border: 2px solid #6793e6;
-  /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: #6793e6;
   padding: 2px;
   margin-top: 10px;
@@ -334,39 +335,36 @@ export const JoinLine = styled.div`
 
 export const ErrorMsg = styled.div`
   width: 240px;
-  height: 30px;
+  height: 20px;
   border: none;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* background-color: #e670a1; */
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 3px;
   opacity: 0.5;
   text-align: left;
   color: #e670a1;
   border-radius: 20px;
   font-family: Nanum Barun Gothic;
-  font-size: 15px;
+  font-size: 12px;
   outline: none;
 `;
 
 export const ErrorMsgLast = styled.div`
   width: 240px;
-  height: 30px;
+  height: 20px;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #e670a1; */
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   opacity: 0.5;
   text-align: left;
   color: #e670a1;
   border-radius: 20px;
   font-family: Nanum Barun Gothic;
-  font-size: 15px;
+  font-size: 12px;
   outline: none;
 `;
 

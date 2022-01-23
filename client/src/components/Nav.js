@@ -30,11 +30,9 @@ export const NavTitle = styled.div`
 `;
 
 const Nav = ({ isLogin }) => {
-  console.log(isLogin)
   return (
     <>
       <NavContainer>
-
         <Link to='/ ' style={{ textDecoration: 'none' }}>
           <NavList />
         </Link>
@@ -56,7 +54,6 @@ const Nav = ({ isLogin }) => {
             <NavMyPage />
           </Link>
         ) : null}
-
       </NavContainer>
     </>
   );

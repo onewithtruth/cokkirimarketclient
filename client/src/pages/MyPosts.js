@@ -22,7 +22,6 @@ const MyPosts = ({ accessToken }) => {
     axios(options)
       .then((res) => {
         setMyposts(res.data.data);
-        console.log(res.data.data);
       })
       .catch();
   };
@@ -30,6 +29,7 @@ const MyPosts = ({ accessToken }) => {
   useEffect(() => {
     getPostList();
   }, []);
+  console.log(myposts);
 
   return (
     <main>
