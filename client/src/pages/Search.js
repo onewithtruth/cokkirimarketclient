@@ -58,11 +58,11 @@ function Search() {
       }
     };
 
-    console.log(options);
-
     axios(options)
       .then((res) => {
+        console.log(res.data);
         setPostList(res.data.data);
+        console.log(postList);
       })
       .catch();
   };
