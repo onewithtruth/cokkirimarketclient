@@ -3,7 +3,14 @@ import SmallButton from './common/SmallButton';
 import { Modal } from './common/Modal';
 import { useNavigate } from 'react-router-dom';
 
-function PostButtonWrapper({ isLogin, accessToken, postUserId, userId }) {
+function PostButtonWrapper({
+  isLogin,
+  accessToken,
+  postUserId,
+  userId,
+  deletePost,
+  patchPost
+}) {
   const navigate = useNavigate();
   const [isAuthor, setIsAuthor] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -27,6 +34,7 @@ function PostButtonWrapper({ isLogin, accessToken, postUserId, userId }) {
         right='5rem'
         onClickHandler={() => {
           console.log('수정');
+          patchPost();
         }}
       >
         수정
@@ -35,6 +43,7 @@ function PostButtonWrapper({ isLogin, accessToken, postUserId, userId }) {
         right='0px'
         onClickHandler={() => {
           console.log('삭제');
+          deletePost();
         }}
       >
         삭제

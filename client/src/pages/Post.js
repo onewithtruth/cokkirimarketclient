@@ -5,8 +5,10 @@ import styled, { css } from 'styled-components';
 import SmallButton from '../components/common/SmallButton';
 import PostButtonWrapper from '../components/PostButtonWrapper';
 import { Modal } from '../components/common/Modal';
+import { useNavigate } from 'react-router-dom';
 
 function Post({ isLogin, accessToken, userId }) {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const postId = Number(pathname.split('/')[2]);
   const [postInfo, setPostInfo] = useState({});
@@ -38,18 +40,28 @@ function Post({ isLogin, accessToken, userId }) {
     return `${curr[0]}년 ${curr[1]}월 ${curr[2]}일`;
   };
 
-  // const deletePost = ()=>{
-  //   const options = {
-  //     method: 'delete',
-  //     url: `https://dev.cokkiriserver.xyz/`
-  //   };
+  const deletePost = () => {
+    console.log('delete');
+    const options = {
+      method: 'delete',
+      url: `https://api.cokkirimarket.xyz/post?id=${postId}`,
+      withCredentials: true,
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    };
 
-  //   axios(options)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //     })
-  //     .catch();
-  // }
+    axios(options)
+      .then((res) => {
+        console.log(res);
+        navigate('/');
+      })
+      .catch(console.log);
+  };
+
+  const patchPost = () => {
+    console.log('patch');
+  };
 
   return (
     <Main height='100vh'>
@@ -65,6 +77,8 @@ function Post({ isLogin, accessToken, userId }) {
           accessToken={accessToken}
           postUserId={postInfo.user_id}
           userId={userId}
+          deletePost={deletePost}
+          patchPost={patchPost}
         ></PostButtonWrapper>
       </MainSection>
       <InfoSection height='18rem'>
