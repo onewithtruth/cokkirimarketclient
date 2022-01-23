@@ -240,7 +240,6 @@ export const IdDuplicatedBtn = styled.div`
   height: 40px;
   border-radius: 20px;
   border: 2px solid #6793e6;
-  /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: #6793e6;
   padding: 2px;
   margin-top: 10px;
@@ -313,7 +312,6 @@ export const JoinBtn = styled.div`
   height: 40px;
   border-radius: 20px;
   border: 2px solid #6793e6;
-  /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: #6793e6;
   padding: 2px;
   margin-top: 10px;

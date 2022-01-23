@@ -52,7 +52,7 @@ export const MyPageId = styled.div`
   text-align: center;
   border-radius: 10px;
   border: 1px solid #e8e7e7;
-  width: 240px;
+  width: 300px;
   height: 50px;
   margin: 10px;
   color: black;
