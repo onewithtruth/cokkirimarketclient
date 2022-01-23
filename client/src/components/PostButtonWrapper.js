@@ -8,6 +8,7 @@ function PostButtonWrapper({
   accessToken,
   postUserId,
   userId,
+  postId,
   deletePost,
   patchPost
 }) {
@@ -34,7 +35,8 @@ function PostButtonWrapper({
         right='5rem'
         onClickHandler={() => {
           console.log('수정');
-          patchPost();
+          navigate(`/modify/${postId}`);
+          //patchPost();
         }}
       >
         수정

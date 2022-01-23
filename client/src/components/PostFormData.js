@@ -64,7 +64,7 @@ const Textarea = styled.textarea`
   box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
 `;
 
-function PostFormData({ fillPostForm, categoryList }) {
+function PostFormData({ fillPostForm, categoryList, postForm }) {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState('');
 
@@ -112,11 +112,17 @@ function PostFormData({ fillPostForm, categoryList }) {
       .catch(console.log);
   };
 
+  console.log(postForm);
+
   return (
     <FormWrapper>
       <ImgWrapper>
         <PreviewDiv onClick={() => fileRef.current.click()}>
-          {preview && <PreviewImg src={preview}></PreviewImg>}
+          {preview ? (
+            <PreviewImg src={preview}></PreviewImg>
+          ) : (
+            <PreviewImg src={postForm.image_src}></PreviewImg>
+          )}
         </PreviewDiv>
         <FileInput
           type='file'
@@ -128,7 +134,11 @@ function PostFormData({ fillPostForm, categoryList }) {
       <SingleInput
         type='text'
         placeholder='제목을 입력하세요'
-        onChange={(e) => fillPostForm({ title: e.target.value })}
+        onChange={(e) => {
+          console.log(e.target.value);
+          fillPostForm({ title: e.target.value });
+        }}
+        defaultValue={postForm.title}
       />
       <DropdownCategory
         list={categoryList}
@@ -139,10 +149,12 @@ function PostFormData({ fillPostForm, categoryList }) {
         type='number'
         placeholder='가격을 입력하세요'
         onChange={(e) => fillPostForm({ price: e.target.value })}
+        defaultValue={postForm.price}
       />
       <Textarea
         placeholder='내용을 입력하세요'
         onChange={(e) => fillPostForm({ contents: e.target.value })}
+        defaultValue={postForm.contents}
       ></Textarea>
     </FormWrapper>
   );

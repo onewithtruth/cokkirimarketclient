@@ -56,10 +56,6 @@ function Post({ isLogin, accessToken, userId }) {
     });
   };
 
-  const patchPost = () => {
-    console.log('patch');
-  };
-
   return (
     <Main height='100vh'>
       <Section height='20rem'>
@@ -74,8 +70,9 @@ function Post({ isLogin, accessToken, userId }) {
           accessToken={accessToken}
           postUserId={postInfo.user_id}
           userId={userId}
+          postId={postId}
+          postInfo={postInfo}
           deletePost={deletePost}
-          patchPost={patchPost}
         ></PostButtonWrapper>
       </MainSection>
       <InfoSection height='18rem'>

@@ -11,6 +11,7 @@ import Search from './pages/Search';
 import MyPosts from './pages/MyPosts';
 import MyEdit from './pages/MyEdit';
 import Oauth from './pages/Oauth';
+import Modify from './pages/Modify';
 
 export const Routers = ({
   isLogin,
@@ -37,6 +38,10 @@ export const Routers = ({
         <Route
           path='/add'
           element={<Add isLogin={isLogin} accessToken={accessToken} />}
+        ></Route>
+        <Route
+          path='/modify/:id'
+          element={<Modify accessToken={accessToken} />}
         ></Route>
         <Route path='/search' element={<Search />}></Route>
         <Route path='/join' element={<Join />} />
