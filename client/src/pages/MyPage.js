@@ -93,6 +93,7 @@ const MyPage = ({
         console.log(res);
         setUserInfo(null);
         setIsLogin(false);
+
         setAccessToken('');
         navigate('/login');
       })

@@ -6,7 +6,7 @@ import Join from './pages/Join';
 import List from './pages/List';
 import Post from './pages/Post';
 import Add from './pages/Add';
-import Chat from './pages/Chat';
+import ChatRoomList from './pages/ChatRoomList';
 import Search from './pages/Search';
 import MyPosts from './pages/MyPosts';
 import MyEdit from './pages/MyEdit';
@@ -81,7 +81,7 @@ export const Routers = ({
             />
           }
         />
-        <Route path='/chat' element={<Chat />} />
+        <Route path='/chatroomlist' element={<ChatRoomList />} />
         <Route
           path='/myposts'
           element={<MyPosts accessToken={accessToken} />}
