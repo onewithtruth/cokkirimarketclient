@@ -22,7 +22,8 @@ export const Routers = ({
   accessToken,
   setAccessToken,
   getUserInfo,
-  userId
+  userId,
+  setShowModal
 }) => {
   return (
     <>
@@ -39,7 +40,7 @@ export const Routers = ({
           element={<Add isLogin={isLogin} accessToken={accessToken} />}
         ></Route>
         <Route path='/search' element={<Search />}></Route>
-        <Route path='/join' element={<Join />} />
+        <Route path='/join' element={<Join setShowModal={setShowModal} />} />
         <Route
           path='/login'
           element={

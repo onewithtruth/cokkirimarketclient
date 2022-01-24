@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Modal } from '../components/common/Modal';
 
-const Join = () => {
+const Join = ({ setShowModal }) => {
   const navigate = useNavigate();
   const [userinfo, setuserinfo] = useState({
     email: '',
@@ -23,12 +23,6 @@ const Join = () => {
   const [emailErrMsg, setEmailErrMsg] = useState('');
   const [passwordErrMsg, setPasswordErrMsg] = useState('');
   const [passwordReErrMsg, setPasswordReErrMsg] = useState('');
-
-  const [showModal, setShowModal] = useState(false);
-
-  const modalHandler = () => {
-    setShowModal(!showModal);
-  };
 
   const chDuplicated = () => {
     const options = {
@@ -120,7 +114,7 @@ const Join = () => {
 
     axios(options)
       .then((res) => {
-        modalHandler();
+        setShowModal(true);
         navigate('/login');
       })
       .catch(function (error) {
