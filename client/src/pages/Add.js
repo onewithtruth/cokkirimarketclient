@@ -36,7 +36,7 @@ function Add({ accessToken }) {
   const postPostDataForm = (postForm) => {
     const options = {
       method: 'post',
-      url: 'https://dev.cokkiriserver.xyz/post',
+      url: 'https://api.cokkirimarket.xyz/post',
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ function Add({ accessToken }) {
   const getCategoryList = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/search`,
+      url: `https://api.cokkirimarket.xyz/search`,
       data: {
         payload: {
           query: 'categoryList'

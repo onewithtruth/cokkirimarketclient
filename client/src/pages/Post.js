@@ -22,7 +22,7 @@ function Post({ isLogin, accessToken, userId }) {
   const getPostDetails = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/post?id=${postId}`
+      url: `https://api.cokkirimarket.xyz/post?id=${postId}`
     };
 
     axios(options)

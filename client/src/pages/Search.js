@@ -30,7 +30,7 @@ function Search() {
     console.log('hi');
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/search`,
+      url: `https://api.cokkirimarket.xyz/search`,
       data: {
         payload: {
           query: 'categoryList'
@@ -49,7 +49,7 @@ function Search() {
   const getSearchList = () => {
     const options = {
       method: 'post',
-      url: `https://dev.cokkiriserver.xyz/search`,
+      url: `https://api.cokkirimarket.xyz/search`,
       data: {
         payload: {
           query: postForm.word,

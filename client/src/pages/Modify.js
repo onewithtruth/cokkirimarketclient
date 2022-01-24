@@ -27,7 +27,7 @@ function Modify({ accessToken }) {
   const getCategoryList = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/search`,
+      url: `https://api.cokkirimarket.xyz/search`,
       data: {
         payload: {
           query: 'categoryList'
@@ -46,7 +46,7 @@ function Modify({ accessToken }) {
   const getPostDetails = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/post?id=${postId}`
+      url: `https://api.cokkirimarket.xyz/post?id=${postId}`
     };
 
     axios(options)

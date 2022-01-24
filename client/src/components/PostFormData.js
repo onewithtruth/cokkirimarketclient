@@ -76,7 +76,7 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
   const getCloudUrl = (uploadFile) => {
     const options = {
       method: 'post',
-      url: `https://dev.cokkiriserver.xyz/image/geturl`,
+      url: `https://api.cokkirimarket.xyz/image/geturl`,
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json'

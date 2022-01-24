@@ -14,7 +14,7 @@ function List({ isLogin, accessToken }) {
   const getPostList = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/post`
+      url: `https://api.cokkirimarket.xyz/post`
     };
 
     axios(options)
