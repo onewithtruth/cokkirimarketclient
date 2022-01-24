@@ -65,7 +65,7 @@ const MyEdit = ({ isLogin, accessToken }) => {
 
     const options = {
       method: 'patch',
-      url: 'https://dev.cokkiriserver.xyz/user',
+      url: 'https://api.cokkirimarket.xyz/user',
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
