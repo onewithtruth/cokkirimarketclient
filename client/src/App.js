@@ -15,6 +15,9 @@ function App() {
   const [userInfo, setUserInfo] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [userId, setUserId] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+  console.log(showModal);
 
   const navigate = useNavigate();
   const isAuthenticated = () => {
@@ -24,8 +27,6 @@ function App() {
     setUserInfo(email);
     isAuthenticated();
   };
-
-  const [showModal, setShowModal] = useState(false);
 
   const modalHandler = (a) => {
     setShowModal(a);
@@ -67,7 +68,7 @@ function App() {
 
   useEffect(() => {
     // isAuthenticated();
-  }, []);
+  }, [showModal, isLogin]);
 
   return (
     <>
