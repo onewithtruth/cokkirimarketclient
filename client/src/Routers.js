@@ -80,7 +80,13 @@ export const Routers = ({
         />
         <Route
           path='/myedit'
-          element={<MyEdit isLogin={isLogin} accessToken={accessToken} />}
+          element={
+            <MyEdit
+              isLogin={isLogin}
+              accessToken={accessToken}
+              setShowModal={setShowModal}
+            />
+          }
         />
         <Route
           path='/oauth'

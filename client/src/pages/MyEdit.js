@@ -15,7 +15,7 @@ import {
   ErrorMsgLast
 } from './Join';
 
-const MyEdit = ({ isLogin, accessToken }) => {
+const MyEdit = ({ isLogin, accessToken, setShowModal }) => {
   const navigate = useNavigate();
   const [userinfo, setuserinfo] = useState({
     user_id: '',
@@ -74,6 +74,7 @@ const MyEdit = ({ isLogin, accessToken }) => {
 
     axios(options)
       .then((res) => {
+        setShowModal(true);
         navigate('/mypage');
       })
       .catch(function (error) {
@@ -149,8 +150,7 @@ const layout = css`
 `;
 
 const Main = styled.main`
-  ${layout}
-  background-color: ${({ theme }) => theme.colors.grey_light};
+  ${layout}// background-color: ${({ theme }) => theme.colors.grey_light};
 `;
 
 export const EditContainer = styled.div`
