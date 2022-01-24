@@ -29,7 +29,6 @@ export const MyPageMenu = styled.div`
   height: 50px;
   border-radius: 10px;
   border: 3px solid #eeeeee;
-  /* box-shadow: 0px 0px 10px #e8e7e7; */
   background-color: white;
   padding: 2px;
   margin: 15px;
@@ -45,17 +44,17 @@ export const MyPageMenu = styled.div`
 `;
 
 export const MyPageId = styled.div`
-  /* background-color: grey; */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 10px;
   border: 1px solid #e8e7e7;
-  width: 300px;
+  width: 320px;
   height: 50px;
   margin: 10px;
   color: black;
+  font-size: 13px;
 `;
 
 export const MyMenuIcon = styled.img`
