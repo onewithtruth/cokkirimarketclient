@@ -46,12 +46,17 @@ const Login = ({
 
       axios(options)
         .then((res) => {
+          console.log(res);
+          console.log('document.cookie', document.cookie);
           handleResponseSuccess(loginInfo.email);
           setAccessToken(res.data.accessToken);
           navigate('/mypage');
           getUserInfo(res.data.accessToken);
         })
         .catch((err) => {
+          console.log(err);
+          console.log('document.cookie', document.cookie);
+          console.log('document.cookie');
           if (err.response) {
             if (err.response.status === 400)
               return setErrorMessage('이메일/비밀번호가 맞지 않습니다');
@@ -159,7 +164,7 @@ const Login = ({
   return (
     <main>
       <LoginContainer onSubmit={(e) => e.preventDefault()}>
-        <LoginTitle>LOGIN(14:13)</LoginTitle>
+        <LoginTitle>LOGIN</LoginTitle>
 
         <LoginInputContainer>
           <LoginInput

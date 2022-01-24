@@ -24,7 +24,8 @@ export const Routers = ({
   setAccessToken,
   getUserInfo,
   userId,
-  setShowModal
+  setShowModal,
+  setModalMsg
 }) => {
   return (
     <>
@@ -45,7 +46,12 @@ export const Routers = ({
           element={<Modify accessToken={accessToken} />}
         ></Route>
         <Route path='/search' element={<Search />}></Route>
-        <Route path='/join' element={<Join setShowModal={setShowModal} />} />
+        <Route
+          path='/join'
+          element={
+            <Join setShowModal={setShowModal} setModalMsg={setModalMsg} />
+          }
+        />
         <Route
           path='/login'
           element={
@@ -58,6 +64,7 @@ export const Routers = ({
               accessToken={accessToken}
               setAccessToken={setAccessToken}
               getUserInfo={getUserInfo}
+              setModalMsg={setModalMsg}
             />
           }
         />
@@ -70,6 +77,7 @@ export const Routers = ({
               handleLogout={handleLogout}
               accessToken={accessToken}
               setAccessToken={setAccessToken}
+              setModalMsg={setModalMsg}
             />
           }
         />
@@ -85,6 +93,7 @@ export const Routers = ({
               isLogin={isLogin}
               accessToken={accessToken}
               setShowModal={setShowModal}
+              setModalMsg={setModalMsg}
             />
           }
         />

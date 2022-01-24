@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Modal } from '../components/common/Modal';
 
-const Join = ({ setShowModal }) => {
+const Join = ({ setShowModal, setModalMsg }) => {
   const navigate = useNavigate();
   const [userinfo, setuserinfo] = useState({
     email: '',
@@ -87,7 +86,6 @@ const Join = ({ setShowModal }) => {
   };
 
   const handleJoin = () => {
-    console.log(emailDupMsg);
     if (emailDupMsg !== '사용가능한 닉네임입니다.')
       return setErrorMessage('이메일 중복검사를 해주세요');
     else setErrorMessage('');
@@ -108,13 +106,15 @@ const Join = ({ setShowModal }) => {
 
     const options = {
       method: 'post',
-      url: 'https://dev.cokkiriserver.xyz/user/signup',
+      url: 'https://api.cokkiriserver.xyz/user/signup',
       data: data
     };
 
     axios(options)
       .then((res) => {
+        console.log(res);
         setShowModal(true);
+        setModalMsg('가입이 완료되었습니다');
         navigate('/login');
       })
       .catch(function (error) {
