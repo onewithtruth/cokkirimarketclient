@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,7 +14,7 @@ import {
   ErrorMsgLast
 } from './Join';
 
-const MyEdit = ({ isLogin, accessToken, setShowModal }) => {
+const MyEdit = ({ isLogin, accessToken, setShowModal, setModalMsg }) => {
   const navigate = useNavigate();
   const [userinfo, setuserinfo] = useState({
     user_id: '',
@@ -75,6 +74,7 @@ const MyEdit = ({ isLogin, accessToken, setShowModal }) => {
     axios(options)
       .then((res) => {
         setShowModal(true);
+        setModalMsg('수정이 완료되었습니다');
         navigate('/mypage');
       })
       .catch(function (error) {

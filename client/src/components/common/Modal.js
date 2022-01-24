@@ -54,6 +54,7 @@ export const Modal = (props) => {
   const openModalHandler = () => {
     setIsOpen(!isOpen);
     props.modalHandler(!isOpen);
+    if (isOpen === false) props.setModalMsg('');
   };
 
   console.log(props.children[0]);

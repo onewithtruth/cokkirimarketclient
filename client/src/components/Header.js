@@ -42,6 +42,7 @@ function Header() {
       </Wrapper>
       <LogoWrapper>
         <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
+        (17:18)
       </LogoWrapper>
     </HeaderWrapper>
   );

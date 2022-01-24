@@ -69,7 +69,9 @@ const MyPage = ({
   userInfo,
   handleLogout,
   accessToken,
-  setAccessToken
+  setAccessToken,
+  setShowModal,
+  setModalMsg
 }) => {
   const navigate = useNavigate();
 
@@ -86,6 +88,8 @@ const MyPage = ({
         withCredentials: true
       })
       .then((res) => {
+        setShowModal(true);
+        setModalMsg('탈퇴가 완료되었습니다');
         console.log(res);
         setUserInfo(null);
         setIsLogin(false);
@@ -100,7 +104,7 @@ const MyPage = ({
   return (
     <main>
       <MyPageContainer>
-        <MyPageTitle>My Page3</MyPageTitle>
+        <MyPageTitle>My Page</MyPageTitle>
         <MyPageId>{userInfo} 님 환영합니다</MyPageId>
 
         <Link to='/myposts' style={{ textDecoration: 'none' }}>

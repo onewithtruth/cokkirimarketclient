@@ -16,8 +16,7 @@ function App() {
   const [accessToken, setAccessToken] = useState('');
   const [userId, setUserId] = useState('');
   const [showModal, setShowModal] = useState(false);
-
-  console.log(showModal);
+  const [modalMsg, setModalMsg] = useState('');
 
   const navigate = useNavigate();
   const isAuthenticated = () => {
@@ -33,19 +32,33 @@ function App() {
   };
 
   const handleLogout = () => {
-    setUserInfo(null);
-    setIsLogin(false);
-    navigate('/login');
-    setAccessToken('');
-
     axios
       .get('https://api.cokkirimarket.xyz/user/logout', {
         headers: {
           Authorization: 'Bearer ' + accessToken
         }
       })
-      .then((res) => {})
-      .catch((err) => {});
+      .then((res) => {
+        console.log(res);
+        setShowModal(true);
+        setModalMsg('로그아웃 되었습니다');
+        setUserInfo(null);
+        setIsLogin(false);
+        setAccessToken('');
+        navigate('/login');
+      })
+      .catch((err) => {
+        if (err.response.status === 400) {
+          setShowModal(true);
+          setModalMsg('로그아웃 되었습니다');
+          setUserInfo(null);
+          setIsLogin(false);
+          setAccessToken('');
+          navigate('/login');
+        }
+        console.log(err);
+        console.log(err.response.status);
+      });
   };
 
   const getUserInfo = (token) => {
@@ -87,9 +100,12 @@ function App() {
           getUserInfo={getUserInfo}
           userId={userId}
           setShowModal={setShowModal}
+          setModalMsg={setModalMsg}
         ></Routers>
         {showModal ? (
-          <Modal modalHandler={modalHandler}>회원가입 완료</Modal>
+          <Modal modalHandler={modalHandler} setModalMsg={setModalMsg}>
+            {modalMsg}
+          </Modal>
         ) : null}
         <Nav isLogin={isLogin} />
       </ThemeProvider>
