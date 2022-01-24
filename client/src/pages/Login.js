@@ -159,7 +159,7 @@ const Login = ({
   return (
     <main>
       <LoginContainer onSubmit={(e) => e.preventDefault()}>
-        <LoginTitle>LOGIN(11:37am)</LoginTitle>
+        <LoginTitle>LOGIN(14:13)</LoginTitle>
 
         <LoginInputContainer>
           <LoginInput
