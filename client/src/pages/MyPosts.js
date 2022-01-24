@@ -13,7 +13,7 @@ const MyPosts = ({ accessToken }) => {
   const getPostList = () => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/post/my`,
+      url: `https://api.cokkirimarket.xyz/post/my`,
       headers: {
         Authorization: 'Bearer ' + accessToken
       }

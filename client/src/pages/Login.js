@@ -40,7 +40,7 @@ const Login = ({
     } else {
       const options = {
         method: 'post',
-        url: 'https://dev.cokkiriserver.xyz/user/login',
+        url: 'https://api.cokkirimarket.xyz/user/login',
         data: loginInfo
       };
 
@@ -87,7 +87,7 @@ const Login = ({
   const handleGithubLogin = async (authorizationCode) => {
     const options = {
       method: 'POST',
-      url: 'https://dev.cokkiriserver.xyz/oauth/oauthgithub',
+      url: 'https://api.cokkirimarket.xyz/oauth/oauthgithub',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -111,7 +111,7 @@ const Login = ({
   const handleGoogleLogin = async (authorizationCode) => {
     const options = {
       method: 'POST',
-      url: 'https://dev.cokkiriserver.xyz/oauth/oauthgoogle',
+      url: 'https://api.cokkirimarket.xyz/oauth/oauthgoogle',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -135,7 +135,7 @@ const Login = ({
   const handleKakaoLogin = async (authorizationCode) => {
     const options = {
       method: 'POST',
-      url: 'https://dev.cokkiriserver.xyz/oauth/oauthkakao',
+      url: 'https://api.cokkirimarket.xyz/oauth/oauthkakao',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -147,11 +147,11 @@ const Login = ({
       .then((response) => {
         console.log(response);
         console.log(response.data.data.accessToken);
-        setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
-        setUserInfo(response.data.data.email);
-        navigate('/mypage');
         getUserInfo(response.data.data.accessToken);
+        setUserInfo(response.data.data.email);
+        setIsLogin(true);
+        navigate('/mypage');
       })
       .catch((err) => null);
   };
@@ -222,7 +222,6 @@ export const LoginTitle = styled.div`
   font-family: Nanum Barun Gothic;
   font-size: 40px;
   font-weight: bold;
-  cursor: none;
 `;
 
 export const LoginInputContainer = styled.div`

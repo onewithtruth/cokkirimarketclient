@@ -50,7 +50,7 @@ function App() {
   const getUserInfo = (token) => {
     const options = {
       method: 'get',
-      url: `https://dev.cokkiriserver.xyz/user/mypage`,
+      url: `https://api.cokkirimarket.xyz/user/mypage`,
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
