@@ -97,6 +97,8 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
+        console.log(response);
+        console.log(response.data.data.accessToken);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
@@ -119,6 +121,8 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
+        console.log(response);
+        console.log(response.data.data.accessToken);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
@@ -141,6 +145,8 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
+        console.log(response);
+        console.log(response.data.data.accessToken);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);

@@ -8,6 +8,7 @@ import { Routers } from './Routers';
 import axios from 'axios';
 import Header from './components/Header';
 import Nav from './components/Nav';
+import { Modal } from './components/common/Modal';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -23,6 +24,13 @@ function App() {
     setUserInfo(email);
     isAuthenticated();
   };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const modalHandler = (a) => {
+    setShowModal(a);
+  };
+
   const handleLogout = () => {
     setUserInfo(null);
     setIsLogin(false);
@@ -77,7 +85,11 @@ function App() {
           setAccessToken={setAccessToken}
           getUserInfo={getUserInfo}
           userId={userId}
+          setShowModal={setShowModal}
         ></Routers>
+        {showModal ? (
+          <Modal modalHandler={modalHandler}>회원가입 완료</Modal>
+        ) : null}
         <Nav isLogin={isLogin} />
       </ThemeProvider>
     </>
