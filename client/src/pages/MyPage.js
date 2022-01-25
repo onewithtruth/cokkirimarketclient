@@ -88,9 +88,9 @@ const MyPage = ({
         withCredentials: true
       })
       .then((res) => {
+        console.log(res);
         setShowModal(true);
         setModalMsg('탈퇴가 완료되었습니다');
-        console.log(res);
         setUserInfo(null);
         setIsLogin(false);
 
