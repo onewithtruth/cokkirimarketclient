@@ -45,7 +45,7 @@ const Nav = ({ isLogin }) => {
           </Link>
         )}
         {isLogin ? (
-          <Link to='/chat' style={{ textDecoration: 'none' }}>
+          <Link to='/chatroomlist' style={{ textDecoration: 'none' }}>
             <NavChat />
           </Link>
         ) : null}

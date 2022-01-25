@@ -10,7 +10,6 @@ import ChatRoomList from './pages/ChatRoomList';
 import Search from './pages/Search';
 import MyPosts from './pages/MyPosts';
 import MyEdit from './pages/MyEdit';
-import Oauth from './pages/Oauth';
 import Modify from './pages/Modify';
 
 export const Routers = ({
@@ -81,7 +80,10 @@ export const Routers = ({
             />
           }
         />
-        <Route path='/chatroomlist' element={<ChatRoomList />} />
+        <Route
+          path='/chatroomlist'
+          element={<ChatRoomList userId={userId} userInfo={userInfo} />}
+        />
         <Route
           path='/myposts'
           element={<MyPosts accessToken={accessToken} />}
@@ -94,18 +96,6 @@ export const Routers = ({
               accessToken={accessToken}
               setShowModal={setShowModal}
               setModalMsg={setModalMsg}
-            />
-          }
-        />
-        <Route
-          path='/oauth'
-          element={
-            <Oauth
-              isLogin={isLogin}
-              userInfo={userInfo}
-              handleLogout={handleLogout}
-              accessToken={accessToken}
-              setAccessToken={setAccessToken}
             />
           }
         />
