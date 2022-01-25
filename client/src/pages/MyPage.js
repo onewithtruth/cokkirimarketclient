@@ -89,13 +89,13 @@ const MyPage = ({
       })
       .then((res) => {
         console.log(res);
-        setShowModal(true);
         setModalMsg('탈퇴가 완료되었습니다');
+        setShowModal(true);
+        navigate('/login');
         setUserInfo(null);
         setIsLogin(false);
 
         setAccessToken('');
-        navigate('/login');
       })
       .catch((err) => {
         console.log(err);
