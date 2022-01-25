@@ -76,6 +76,7 @@ export const Routers = ({
               handleLogout={handleLogout}
               accessToken={accessToken}
               setAccessToken={setAccessToken}
+              setShowModal={setShowModal}
               setModalMsg={setModalMsg}
             />
           }
