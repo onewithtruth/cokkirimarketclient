@@ -64,16 +64,18 @@ function PostListItem({ info }) {
     : '없음';
 
   return (
-    // <StLink to={`/list/${info.room.split('@')[0]}`}>
-    <PostItemWrapper>
-      <PostImg src={info.image_src ? info.image_src : './icons/elephant.png'} />
-      <PostInfo>
-        <PostTitle>{info.title}</PostTitle>
-        <PostCategory>{category}</PostCategory>
-        <PostPrice>{info.price + ' 원'}</PostPrice>
-      </PostInfo>
-    </PostItemWrapper>
-    // </StLink>
+    <StLink to={`/list/${info.room.split('@')[0]}`}>
+      <PostItemWrapper>
+        <PostImg
+          src={info.image_src ? info.image_src : './icons/elephant.png'}
+        />
+        <PostInfo>
+          <PostTitle>{info.title}</PostTitle>
+          <PostCategory>{category}</PostCategory>
+          <PostPrice>{info.price + ' 원'}</PostPrice>
+        </PostInfo>
+      </PostItemWrapper>
+    </StLink>
   );
 }
 
