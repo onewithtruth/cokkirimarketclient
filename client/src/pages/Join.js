@@ -106,7 +106,7 @@ const Join = ({ setShowModal, setModalMsg }) => {
 
     const options = {
       method: 'post',
-      url: 'https://api.cokkiriserver.xyz/user/signup',
+      url: 'https://api.cokkirimarket.xyz/user/signup',
       data: data
     };
 
