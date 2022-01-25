@@ -25,7 +25,9 @@ export const Routers = ({
   getUserInfo,
   userId,
   setShowModal,
-  setModalMsg
+  setModalMsg,
+  setNickname,
+  nickname
 }) => {
   return (
     <>
@@ -34,7 +36,12 @@ export const Routers = ({
         <Route
           path='/list/:id'
           element={
-            <Post isLogin={isLogin} accessToken={accessToken} userId={userId} />
+            <Post
+              isLogin={isLogin}
+              accessToken={accessToken}
+              userId={userId}
+              userInfo={userInfo}
+            />
           }
         ></Route>
         <Route
@@ -46,6 +53,10 @@ export const Routers = ({
           element={<Modify accessToken={accessToken} />}
         ></Route>
         <Route path='/search' element={<Search />}></Route>
+        <Route
+          path='/chat/:chatroom'
+          element={<Chat userId={userId} nickname={nickname} />}
+        ></Route>
         <Route
           path='/join'
           element={
@@ -65,6 +76,7 @@ export const Routers = ({
               setAccessToken={setAccessToken}
               getUserInfo={getUserInfo}
               setModalMsg={setModalMsg}
+              setNickname={setNickname}
             />
           }
         />

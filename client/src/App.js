@@ -17,6 +17,7 @@ function App() {
   const [userId, setUserId] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [modalMsg, setModalMsg] = useState('');
+  const [nickname, setNickname] = useState('');
 
   const navigate = useNavigate();
   const isAuthenticated = () => {
@@ -101,6 +102,8 @@ function App() {
           userId={userId}
           setShowModal={setShowModal}
           setModalMsg={setModalMsg}
+          setNickname={setNickname}
+          nickname={nickname}
         ></Routers>
         {showModal ? (
           <Modal modalHandler={modalHandler} setModalMsg={setModalMsg}>

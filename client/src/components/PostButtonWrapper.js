@@ -10,7 +10,8 @@ function PostButtonWrapper({
   userId,
   postId,
   deletePost,
-  patchPost
+  patchPost,
+  userInfo
 }) {
   const navigate = useNavigate();
   const [isAuthor, setIsAuthor] = useState(false);
@@ -36,7 +37,6 @@ function PostButtonWrapper({
         onClickHandler={() => {
           console.log('수정');
           navigate(`/modify/${postId}`);
-          //patchPost();
         }}
       >
         수정
@@ -58,6 +58,8 @@ function PostButtonWrapper({
         onClickHandler={() => {
           !isLogin && setShowModal(true);
           /* !로그인 된 경우 채팅으로 이동! */
+          isLogin &&
+            navigate(`/chat/${postId}#${userInfo}`, { state: { postUserId } });
         }}
       >
         채팅하기

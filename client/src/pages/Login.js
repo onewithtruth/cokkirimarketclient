@@ -12,7 +12,8 @@ const Login = ({
   setAccessToken,
   userInfo,
   setUserInfo,
-  getUserInfo
+  getUserInfo,
+  setNickname
 }) => {
   useEffect(() => {
     let url = new URL(window.location.href);
@@ -52,6 +53,7 @@ const Login = ({
           setAccessToken(res.data.accessToken);
           navigate('/mypage');
           getUserInfo(res.data.accessToken);
+          setNickname(res.data.userInfo.nickname);
         })
         .catch((err) => {
           console.log(err);

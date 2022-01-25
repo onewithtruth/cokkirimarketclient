@@ -7,7 +7,7 @@ import PostButtonWrapper from '../components/PostButtonWrapper';
 import { Modal } from '../components/common/Modal';
 import { useNavigate } from 'react-router-dom';
 
-function Post({ isLogin, accessToken, userId }) {
+function Post({ isLogin, accessToken, userId, userInfo }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const postId = Number(pathname.split('/')[2]);
@@ -73,6 +73,7 @@ function Post({ isLogin, accessToken, userId }) {
           postId={postId}
           postInfo={postInfo}
           deletePost={deletePost}
+          userInfo={userInfo}
         ></PostButtonWrapper>
       </MainSection>
       <InfoSection height='18rem'>
