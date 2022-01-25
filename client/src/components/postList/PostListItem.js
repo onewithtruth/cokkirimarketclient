@@ -64,7 +64,7 @@ function PostListItem({ info }) {
     : '없음';
 
   return (
-    <StLink to={`/list/${info.id}`}>
+    <StLink to={`/list/${info.room.split('@')[0]}`}>
       <PostItemWrapper>
         <PostImg
           src={info.image_src ? info.image_src : './icons/elephant.png'}

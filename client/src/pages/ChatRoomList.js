@@ -13,6 +13,7 @@ const ChatRoomList = ({ userId, userInfo }) => {
   const chatListCallerforChatComponent = async () => {
     const payload = {
       user_id: userId
+      // user_id: 62
     };
 
     const options = {
@@ -27,7 +28,10 @@ const ChatRoomList = ({ userId, userInfo }) => {
 
     await axios(options)
       .then((response) => {
-        setRoomData(response.data.data.chatListInfoOutput);
+        console.log(response.data.data.chatListInfoOutput);
+        if (response.data.data.chatListInfoOutput)
+          setRoomData(response.data.data.chatListInfoOutput);
+
         // let previousChatData = response.data;
         // setNickname(previousChatData.data.myNickname);
         // setChatListData(previousChatData.data.chatListInfo);
