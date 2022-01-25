@@ -22,6 +22,7 @@ function App() {
   const isAuthenticated = () => {
     setIsLogin(true);
   };
+
   const handleResponseSuccess = (email) => {
     setUserInfo(email);
     isAuthenticated();
@@ -39,7 +40,6 @@ function App() {
         }
       })
       .then((res) => {
-        console.log(res);
         setShowModal(true);
         setModalMsg('로그아웃 되었습니다');
         setUserInfo(null);
@@ -48,7 +48,7 @@ function App() {
         navigate('/login');
       })
       .catch((err) => {
-        if (err.response.status === 400) {
+        if (err.response.status === 401) {
           setShowModal(true);
           setModalMsg('로그아웃 되었습니다');
           setUserInfo(null);
