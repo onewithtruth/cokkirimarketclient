@@ -41,7 +41,8 @@ const Login = ({
       const options = {
         method: 'post',
         url: 'https://api.cokkirimarket.xyz/user/login',
-        data: loginInfo
+        data: loginInfo,
+        withCredentials: true
       };
 
       axios(options)
