@@ -63,8 +63,14 @@ function RoomItem({ info, userInfo }) {
   //   ? info.post_has_categories[0].category.category
   //   : '없음';\
 
-  let id = userInfo.split('@')[0];
-  console.log('userInfo', userInfo);
+  let id;
+
+  if (userInfo.length > 0) {
+    id = userInfo.split('@')[0];
+  } else {
+    id = userInfo;
+  }
+
   const buyer = info.room.split('#')[1].split('@')[0];
   const seller = info.post_id_post_post_has_chats[0].user.nickname;
 
