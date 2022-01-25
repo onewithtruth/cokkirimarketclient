@@ -6,12 +6,12 @@ import Join from './pages/Join';
 import List from './pages/List';
 import Post from './pages/Post';
 import Add from './pages/Add';
-import Chat from './pages/Chat';
+import ChatRoomList from './pages/ChatRoomList';
 import Search from './pages/Search';
 import MyPosts from './pages/MyPosts';
 import MyEdit from './pages/MyEdit';
-import Oauth from './pages/Oauth';
 import Modify from './pages/Modify';
+import Chat from './pages/Chat';
 
 export const Routers = ({
   isLogin,
@@ -89,11 +89,15 @@ export const Routers = ({
               handleLogout={handleLogout}
               accessToken={accessToken}
               setAccessToken={setAccessToken}
+              setShowModal={setShowModal}
               setModalMsg={setModalMsg}
             />
           }
         />
-        <Route path='/chat' element={<Chat />} />
+        <Route
+          path='/chatroomlist'
+          element={<ChatRoomList userId={userId} userInfo={userInfo} />}
+        />
         <Route
           path='/myposts'
           element={<MyPosts accessToken={accessToken} />}
@@ -106,18 +110,6 @@ export const Routers = ({
               accessToken={accessToken}
               setShowModal={setShowModal}
               setModalMsg={setModalMsg}
-            />
-          }
-        />
-        <Route
-          path='/oauth'
-          element={
-            <Oauth
-              isLogin={isLogin}
-              userInfo={userInfo}
-              handleLogout={handleLogout}
-              accessToken={accessToken}
-              setAccessToken={setAccessToken}
             />
           }
         />
