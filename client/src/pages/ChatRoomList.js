@@ -12,8 +12,8 @@ const ChatRoomList = ({ userId, userInfo }) => {
 
   const chatListCallerforChatComponent = async () => {
     const payload = {
-      user_id: userId
-      // user_id: 62
+      // user_id: userId
+      user_id: 62
     };
 
     const options = {

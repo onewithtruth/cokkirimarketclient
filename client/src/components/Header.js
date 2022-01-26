@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import NavList from './Nav/NavList';
+import NavSearch from './Nav/NavSearch';
+import NavLogin from './Nav/NavLogin';
+import NavMyPage from './Nav/NavMyPage';
+import NavChat from './Nav/NavChat';
+import { Link } from 'react-router-dom';
+import { NavContainer, NavTitle } from './Nav';
 
 const HeaderWrapper = styled.header`
   width: 100vw;
@@ -32,7 +39,15 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-function Header() {
+const headerMenuContainer = styled.div`
+  @media only screen and (max
+ 
+ -width: 769px) {
+    display: none;
+  }
+`;
+
+function Header({ isLogin }) {
   const navigate = useNavigate();
 
   return (
@@ -44,6 +59,30 @@ function Header() {
         <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
         (15:24)
       </LogoWrapper>
+
+      <headerMenuContainer>
+        {/* <Link to='/ ' style={{ textDecoration: 'none' }}>
+          <NavList />
+        </Link>
+        <Link to='/search' style={{ textDecoration: 'none' }}>
+          <NavSearch />
+        </Link>
+        {isLogin ? null : (
+          <Link to='/login' style={{ textDecoration: 'none' }}>
+            <NavLogin />
+          </Link>
+        )}
+        {isLogin ? (
+          <Link to='/chatroomlist' style={{ textDecoration: 'none' }}>
+            <NavChat />
+          </Link>
+        ) : null}
+        {isLogin ? (
+          <Link to='/mypage' style={{ textDecoration: 'none' }}>
+            <NavMyPage />
+          </Link>
+        ) : null} */}
+      </headerMenuContainer>
     </HeaderWrapper>
   );
 }
