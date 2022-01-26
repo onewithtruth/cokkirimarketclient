@@ -39,10 +39,8 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-const headerMenuContainer = styled.div`
-  @media only screen and (max
- 
- -width: 769px) {
+const HeaderMenuContainer = styled.div`
+  @media only screen and (max-width: 769px) {
     display: none;
   }
 `;
@@ -60,7 +58,7 @@ function Header({ isLogin }) {
         (15:24)
       </LogoWrapper>
 
-      <headerMenuContainer>
+      <HeaderMenuContainer>
         {/* <Link to='/ ' style={{ textDecoration: 'none' }}>
           <NavList />
         </Link>
@@ -82,7 +80,7 @@ function Header({ isLogin }) {
             <NavMyPage />
           </Link>
         ) : null} */}
-      </headerMenuContainer>
+      </HeaderMenuContainer>
     </HeaderWrapper>
   );
 }

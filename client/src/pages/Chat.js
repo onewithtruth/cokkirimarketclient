@@ -16,16 +16,18 @@ function Chat({ userId, nickname }) {
   const [currentMessage, setCurrentMessage] = useState('');
   const inputRef = useRef(null);
 
-  // useEffect(() => {
-  //   //getPreviousChatList();
-  // }, []);
-
   useEffect(() => {
+    joinRoom();
     socket.on('receive_message', (data) => {
       console.log(data);
       setMessageList((list) => [...list, data]);
     });
-  });
+  }, []);
+
+  const joinRoom = () => {
+    socket.emit('join_room', room);
+    getPreviousChatList();
+  };
 
   const getPreviousChatList = () => {
     const payload = {
