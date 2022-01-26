@@ -79,7 +79,7 @@ function RoomItem({ info, userInfo }) {
   // console.log('buyer', buyer);
 
   return (
-    <StLink to={`/chat/${postId}#${userInfo}`}>
+    <StLink to={`/chat/${postId}#${buyer}`}>
       <PostItemWrapper>
         <PostImg
           src={info.image_src ? info.image_src : './icons/elephant.png'}
