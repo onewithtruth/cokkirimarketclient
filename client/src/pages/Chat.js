@@ -10,21 +10,22 @@ function Chat({ userId, nickname }) {
   const { pathname, hash, state } = useLocation();
   const postId = pathname.split('/')[2];
   const room = postId + hash;
-  const postUserId = state.postUserId;
+  const postUserId = (state && state.postUserId) || 74;
 
-  // const [previousChatData, setPreviousChatData] = useState([]);
-  // const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
   const inputRef = useRef(null);
 
+  // useEffect(() => {
+  //   //getPreviousChatList();
+  // }, []);
+
   useEffect(() => {
-    getPreviousChatList();
     socket.on('receive_message', (data) => {
       console.log(data);
       setMessageList((list) => [...list, data]);
     });
-  }, [socket]);
+  });
 
   const getPreviousChatList = () => {
     const payload = {
@@ -46,7 +47,6 @@ function Chat({ userId, nickname }) {
       .then((res) => {
         const previousChatData = res.data.data;
         setMessageList(previousChatData);
-        console.log(previousChatData);
       })
       .catch((err) => null);
   };
@@ -55,6 +55,7 @@ function Chat({ userId, nickname }) {
     if (currentMessage !== '') {
       const messageData = {
         room,
+        user_id: userId,
         author: nickname,
         message: currentMessage,
         time:
@@ -134,7 +135,6 @@ const Li = styled.li`
   flex-direction: column;
 
   &.myChat {
-    align-items: flex-end;
     text-align: right;
   }
 `;
