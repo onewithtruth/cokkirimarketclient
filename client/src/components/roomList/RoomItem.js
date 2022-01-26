@@ -68,6 +68,7 @@ function RoomItem({ info, userInfo }) {
   // console.log(info.user.nickname);
   const postId = info.id;
   const buyer = info.chat_id_chats[0].room.split('#')[1].split('@')[0];
+  const buyerEmail = info.chat_id_chats[0].room.split('#')[1];
   // const buyer = info.room.split('#')[1].split('@')[0];
   const seller = info.user.nickname;
 
@@ -79,7 +80,7 @@ function RoomItem({ info, userInfo }) {
   // console.log('buyer', buyer);
 
   return (
-    <StLink to={`/chat/${postId}#${buyer}`}>
+    <StLink to={`/chat/${postId}#${buyerEmail}`}>
       <PostItemWrapper>
         <PostImg
           src={info.image_src ? info.image_src : './icons/elephant.png'}
