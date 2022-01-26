@@ -55,9 +55,6 @@ const Login = ({
           setNickname(res.data.userInfo.nickname);
         })
         .catch((err) => {
-          console.log(err);
-          console.log('document.cookie', document.cookie);
-          console.log('document.cookie');
           if (err.response) {
             if (err.response.status === 400)
               return setErrorMessage('이메일/비밀번호가 맞지 않습니다');
@@ -156,6 +153,11 @@ const Login = ({
       .catch((err) => null);
   };
 
+  const handleTestLogin = () => {
+    setLoginInfo({ email: 'test@test.com', password: 'd' });
+    handleLogin();
+  };
+
   return (
     <main>
       <LoginContainer onSubmit={(e) => e.preventDefault()}>
@@ -187,7 +189,7 @@ const Login = ({
         {/* <JoinBtnGithub onClick={socialLoginHandler('github')}>
           깃허브로 시작하기
         </JoinBtnGithub> */}
-        <JoinBtnGithub onClick={socialLoginHandler('github')}>
+        <JoinBtnGithub onClick={handleTestLogin}>
           테스트 계정으로 시작하기
         </JoinBtnGithub>
 
