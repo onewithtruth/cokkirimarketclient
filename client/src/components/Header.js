@@ -39,7 +39,7 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-const headerMenuContainer = styled.div`
+const HeaderMenuContainer = styled.div`
   @media only screen and (max
  
  -width: 769px) {
@@ -57,10 +57,10 @@ function Header({ isLogin }) {
       </Wrapper>
       <LogoWrapper>
         <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
-        (15:24)
+        (10:11)
       </LogoWrapper>
 
-      <headerMenuContainer>
+      <HeaderMenuContainer>
         {/* <Link to='/ ' style={{ textDecoration: 'none' }}>
           <NavList />
         </Link>
@@ -82,7 +82,7 @@ function Header({ isLogin }) {
             <NavMyPage />
           </Link>
         ) : null} */}
-      </headerMenuContainer>
+      </HeaderMenuContainer>
     </HeaderWrapper>
   );
 }
