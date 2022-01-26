@@ -65,26 +65,32 @@ function RoomItem({ info, userInfo }) {
     id = userInfo;
   }
 
+  console.log(info);
+
   // console.log(info.user.nickname);
   const postId = info.id;
-  const buyer = info.chat_id_chats[0].room.split('#')[1].split('@')[0];
-  const buyerEmail = info.chat_id_chats[0].room.split('#')[1];
+  // const buyer = info.chat_id_chats[0].room.split('#')[1].split('@')[0];
+  const buyer = info.room.split('#')[1].split('@')[0];
+  const buyerEmail = info.room.split('#')[1];
   // const buyer = info.room.split('#')[1].split('@')[0];
-  const seller = info.user.nickname;
+  const seller = info.post_id_post_post_has_chats[0].user.nickname;
+  const img_src = info.post_id_post_post_has_chats[0].image_src;
 
-  if (id === seller) id = buyer;
-  else id = seller;
+  console.log('id', id);
+  console.log('seller', seller);
+  console.log('buyer', buyer);
 
-  // console.log('id', id);
-  // console.log('seller', seller);
-  // console.log('buyer', buyer);
+  if (id !== seller) id = seller;
+  else id = buyer;
+
+  console.log('id', id);
+  console.log('seller', seller);
+  console.log('buyer', buyer);
 
   return (
     <StLink to={`/chat/${postId}#${buyerEmail}`}>
       <PostItemWrapper>
-        <PostImg
-          src={info.image_src ? info.image_src : './icons/elephant.png'}
-        />
+        <PostImg src={img_src ? img_src : './icons/elephant.png'} />
         <PostInfo>
           <PostTitle>{info.title}</PostTitle>
           <PostPrice>{id}</PostPrice>
