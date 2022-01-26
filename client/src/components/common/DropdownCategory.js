@@ -2,25 +2,38 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width: ${({ width }) => (width && `${width}`) || 'auto'};
   height: 3rem;
-  padding: 0 5%;
   margin-bottom: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: relative;
   border-radius: 30px;
   border: 1px solid ${({ theme }) => theme.colors.grey};
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
   background-color: white;
   cursor: pointer;
+
+  &.small {
+    height: 2.5rem;
+    width: 25%;
+    padding: 0 1%;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  &.big {
+    padding: 0 5%;
+    justify-content: space-between;
+  }
 `;
 
 const Ul = styled.ul`
   width: 85%;
   position: absolute;
   top: 3rem;
+
+  &.small {
+    width: 100%;
+  }
 `;
 
 const Li = styled.li`
@@ -35,9 +48,13 @@ const Li = styled.li`
   &:hover {
     background-color: ${({ theme }) => theme.colors.grey2};
   }
+
+  &.small {
+    padding: 0.5rem 0.4rem;
+  }
 `;
 
-function DropdownCategory({ list, fillPostForm, width }) {
+function DropdownCategory({ list, fillPostForm, width, small }) {
   const dropDownRef = useRef(null);
   const [category, setCategory] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +77,11 @@ function DropdownCategory({ list, fillPostForm, width }) {
     return list.map((obj) => {
       const { id, category } = obj;
       return (
-        <Li key={id} onClick={() => onCategoryClickHandler(id, category)}>
+        <Li
+          key={id}
+          className={small && 'small'}
+          onClick={() => onCategoryClickHandler(id, category)}
+        >
           {category}
         </Li>
       );
@@ -74,10 +95,14 @@ function DropdownCategory({ list, fillPostForm, width }) {
   };
 
   return (
-    <Wrapper ref={dropDownRef} onClick={() => setIsOpen(!isOpen)} width={width}>
+    <Wrapper
+      ref={dropDownRef}
+      onClick={() => setIsOpen(!isOpen)}
+      className={small && 'small'}
+    >
       <span>{category ? category : '카테고리'}</span>
       <span> ▼ </span>
-      <Ul>{isOpen && showCategoryList()}</Ul>
+      <Ul className={small && 'small'}>{isOpen && showCategoryList()}</Ul>
     </Wrapper>
   );
 }

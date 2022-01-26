@@ -12,14 +12,13 @@ const location = css`
 const Button = styled.button`
   ${location}
   height: 2.2rem;
-  padding: 1.2rem 0.8rem;
+  padding: 1.2rem 0.5rem;
   margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.colors.blue_light};
   border-radius: 5px;
-  box-shadow: 1px 1px 3px ${({ theme }) => theme.colors.grey2};
   background-color: ${({ theme }) => theme.colors.blue_base};
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.2rem;

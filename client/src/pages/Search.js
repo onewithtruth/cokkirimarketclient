@@ -3,6 +3,8 @@ import axios from 'axios';
 import PostList from '../components/postList/PostList';
 import SearchForm from '../components/SearchForm';
 import { validationCheckAPI } from '../api';
+import Indicator from '../components/common/Indicator';
+import styled from 'styled-components';
 
 function Search() {
   const [categoryList, setCategoryList] = useState([]);
@@ -74,9 +76,17 @@ function Search() {
         submitPostForm={submitPostForm}
         categoryList={categoryList}
       ></SearchForm>
-      <PostList posts={postList}></PostList>
+      {postList.length > 0 ? (
+        <PostList posts={postList}></PostList>
+      ) : (
+        <Indicator noResult>검색 결과가 없습니다!</Indicator>
+      )}
     </main>
   );
 }
+
+const NoResultIndicator = styled(Indicator)`
+  background-color: pink;
+`;
 
 export default Search;

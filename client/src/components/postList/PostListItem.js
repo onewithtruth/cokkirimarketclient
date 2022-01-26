@@ -12,12 +12,12 @@ const PostItemWrapper = styled.li`
   width: 100%;
   height: 8rem;
   padding: 3vh;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid ${({ theme }) => theme.colors.grey};
   border-radius: 10px;
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -33,7 +33,7 @@ const PostInfo = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3vw;
+  justify-content: space-around;
 `;
 
 const PostTitle = styled.h2`

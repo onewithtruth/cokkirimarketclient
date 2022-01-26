@@ -7,8 +7,8 @@ const Wrapper = styled.form`
   margin-top: 4rem;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 `;
 
 function SearchForm({ fillPostForm, submitPostForm, categoryList }) {
@@ -17,9 +17,9 @@ function SearchForm({ fillPostForm, submitPostForm, categoryList }) {
   return (
     <Wrapper>
       <DropdownCategory
-        width='35%'
         list={categories}
         fillPostForm={fillPostForm}
+        small
       ></DropdownCategory>
       <Searchbar
         fillPostForm={fillPostForm}

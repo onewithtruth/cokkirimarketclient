@@ -25,8 +25,6 @@ function List({ isLogin, accessToken }) {
       .catch();
   };
 
-  console.log(postList);
-
   return (
     <main>
       <PostList posts={postList}></PostList>

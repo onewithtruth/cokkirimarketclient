@@ -98,7 +98,6 @@ const layout = css`
 
 const Main = styled.main`
   ${layout}
-  background-color: ${({ theme }) => theme.colors.grey_light};
 `;
 
 const Section = styled.section`
