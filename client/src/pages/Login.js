@@ -48,8 +48,6 @@ const Login = ({
 
       axios(options)
         .then((res) => {
-          console.log(res);
-          console.log('document.cookie', document.cookie);
           handleResponseSuccess(loginInfo.email);
           setAccessToken(res.data.accessToken);
           navigate('/mypage');
@@ -105,8 +103,6 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
-        console.log(response.data.data.accessToken);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
@@ -129,8 +125,6 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
-        console.log(response.data.data.accessToken);
         setIsLogin(true);
         setAccessToken(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
@@ -153,8 +147,6 @@ const Login = ({
 
     await axios(options)
       .then((response) => {
-        console.log(response);
-        console.log(response.data.data.accessToken);
         setAccessToken(response.data.data.accessToken);
         getUserInfo(response.data.data.accessToken);
         setUserInfo(response.data.data.email);
@@ -192,8 +184,11 @@ const Login = ({
           <JoinBtnMail>메일로 시작하기 </JoinBtnMail>
         </Link>
 
-        <JoinBtnGithub onClick={socialLoginHandler('github')}>
+        {/* <JoinBtnGithub onClick={socialLoginHandler('github')}>
           깃허브로 시작하기
+        </JoinBtnGithub> */}
+        <JoinBtnGithub onClick={socialLoginHandler('github')}>
+          테스트 계정으로 시작하기
         </JoinBtnGithub>
 
         <JoinBtnGoogle onClick={socialLoginHandler('google')}>
