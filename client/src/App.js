@@ -88,7 +88,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Header />
+        <Header isLogin={isLogin} />
         <Routers
           isLogin={isLogin}
           setIsLogin={setIsLogin}

@@ -8,7 +8,7 @@ const PostListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: ${({ theme }) => theme.colors.grey_light};
+  // background-color: ${({ theme }) => theme.colors.grey_light};
 `;
 
 function RoomList({ roomData, userInfo }) {

@@ -1,31 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-// import { Modal } from '../common/Modal';
+import { Link } from 'react-router-dom';
+import { Modal } from '../common/Modal';
 
-// const StLink = styled(Link)`
-//   all: unset;
-//   cursor: pointer;
-// `;
+const StLink = styled(Link)`
+  all: unset;
+  cursor: pointer;
+`;
 
 const PostItemWrapper = styled.li`
   width: 100%;
-  height: 8rem;
+  // height: 8rem;
   padding: 3vh;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   gap: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
+  border: 1px solid ${({ theme }) => theme.colors.grey_light};
   border-radius: 10px;
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
+  // box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const PostImg = styled.img`
   width: 11vh;
   height: 11vh;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
-  border-radius: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.grey_light};
+  // padding :2px
+  border-radius: 50px;
 `;
 
 const PostInfo = styled.div`
@@ -38,31 +40,23 @@ const PostInfo = styled.div`
 
 const PostTitle = styled.h2`
   width: 100%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 1;
+  // overflow: hidden;
   font-size: 1.1rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.blue_dark};
 `;
 
-const PostCategory = styled.span`
-  color: ${({ theme }) => theme.colors.grey_dark};
-  font-size: 0.8rem;
-`;
-
 const PostPrice = styled.span`
   color: ${({ theme }) => theme.colors.blue_dark};
-  font-size: 1.2rem;
+  // font-size: 1.2rem;
+  font-size: 10px;
   font-weight: 700;
 `;
 
 function RoomItem({ info, userInfo }) {
-  // const category = info.post_has_categories[0]
-  //   ? info.post_has_categories[0].category.category
-  //   : '없음';\
-
   let id;
 
   if (userInfo.length > 0) {
@@ -71,30 +65,32 @@ function RoomItem({ info, userInfo }) {
     id = userInfo;
   }
 
-  const buyer = info.room.split('#')[1].split('@')[0];
-  const seller = info.post_id_post_post_has_chats[0].user.nickname;
+  // console.log(info.user.nickname);
+  const postId = info.id;
+  const buyer = info.chat_id_chats[0].room.split('#')[1].split('@')[0];
+  // const buyer = info.room.split('#')[1].split('@')[0];
+  const seller = info.user.nickname;
 
   if (id === seller) id = buyer;
   else id = seller;
 
-  console.log('id', id);
-  console.log('seller', seller);
-  console.log('buyer', buyer);
+  // console.log('id', id);
+  // console.log('seller', seller);
+  // console.log('buyer', buyer);
 
   return (
-    <>
+    <StLink to={`/chat/${postId}#${userInfo}`}>
       <PostItemWrapper>
         <PostImg
           src={info.image_src ? info.image_src : './icons/elephant.png'}
         />
         <PostInfo>
-          <PostTitle>{info.post_id_post_post_has_chats[0].title}</PostTitle>
+          <PostTitle>{info.title}</PostTitle>
           <PostPrice>{id}</PostPrice>
         </PostInfo>
       </PostItemWrapper>
-    </>
+    </StLink>
   );
 }
 
-//
 export default RoomItem;

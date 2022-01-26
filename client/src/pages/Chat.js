@@ -18,14 +18,11 @@ function Chat({ userId, nickname }) {
 
   useEffect(() => {
     joinRoom();
-    console.log('hi');
     socket.on('receive_message', (data) => {
       console.log(data);
       setMessageList((list) => [...list, data]);
     });
   }, []);
-
-  useEffect(() => {});
 
   const joinRoom = () => {
     socket.emit('join_room', room);
