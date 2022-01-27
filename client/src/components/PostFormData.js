@@ -5,9 +5,8 @@ import DropdownCategory from './common/DropdownCategory';
 import Indicator from './common/Indicator';
 
 function PostFormData({ fillPostForm, categoryList, postForm }) {
-  const COKKIRI_IMG_SRC =
-    'https://imagedelivery.net/BOKuAiJyROlMLXwCcBYMqQ/317e8bf6-67b6-493f-b1ea-122bfe042c00/thumbnail';
   const fileRef = useRef(null);
+  const priceRef = useRef(null);
   const [preview, setPreview] = useState('');
   const [isImgLoading, setIsImgLoading] = useState(false);
 
@@ -29,6 +28,13 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
     } else {
       return <PreviewImg src={preview}></PreviewImg>;
     }
+  };
+
+  const priceHandler = (e) => {
+    const price = e.target.value;
+    if (price.length > 12) {
+      priceRef.current.value = postForm.price;
+    } else fillPostForm({ price });
   };
 
   const getCloudUrl = (uploadFile) => {
@@ -111,8 +117,9 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
       ></DropdownCategory>
       <SingleInput
         type='number'
+        ref={priceRef}
         placeholder='가격을 입력하세요'
-        onChange={(e) => fillPostForm({ price: e.target.value })}
+        onChange={priceHandler}
         defaultValue={postForm.price}
       />
       <Textarea
