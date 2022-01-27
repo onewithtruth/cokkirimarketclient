@@ -96,7 +96,7 @@ function RoomItem({ info, userInfo }) {
       <PostImg src={img_src ? img_src : './icons/elephant.png'} />
       <PostInfo>
         <PostTitle>{title}</PostTitle>
-        <PostPrice>{name}</PostPrice>
+        <PostPrice>{name}님과 채팅 중</PostPrice>
       </PostInfo>
     </PostItemWrapper>
   );
