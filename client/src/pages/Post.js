@@ -12,8 +12,6 @@ function Post({ isLogin, accessToken, userId, userInfo }) {
   const [postInfo, setPostInfo] = useState({});
   //\n
   useEffect(() => {
-    console.log(postId);
-    console.log(accessToken); // string('')
     getPostDetails();
   }, []);
 

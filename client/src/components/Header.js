@@ -55,32 +55,7 @@ function Header({ isLogin }) {
       </Wrapper>
       <LogoWrapper>
         <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
-        (10:11)
       </LogoWrapper>
-
-      <HeaderMenuContainer>
-        {/* <Link to='/ ' style={{ textDecoration: 'none' }}>
-          <NavList />
-        </Link>
-        <Link to='/search' style={{ textDecoration: 'none' }}>
-          <NavSearch />
-        </Link>
-        {isLogin ? null : (
-          <Link to='/login' style={{ textDecoration: 'none' }}>
-            <NavLogin />
-          </Link>
-        )}
-        {isLogin ? (
-          <Link to='/chatroomlist' style={{ textDecoration: 'none' }}>
-            <NavChat />
-          </Link>
-        ) : null}
-        {isLogin ? (
-          <Link to='/mypage' style={{ textDecoration: 'none' }}>
-            <NavMyPage />
-          </Link>
-        ) : null} */}
-      </HeaderMenuContainer>
     </HeaderWrapper>
   );
 }
