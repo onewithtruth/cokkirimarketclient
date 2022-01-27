@@ -20,7 +20,8 @@ const Wrapper = styled.div`
     font-size: 0.9rem;
   }
 
-  &.big {
+  &.large {
+    width: 85%;
     padding: 0 5%;
     justify-content: space-between;
   }
@@ -54,7 +55,7 @@ const Li = styled.li`
   }
 `;
 
-function DropdownCategory({ list, fillPostForm, width, small }) {
+function DropdownCategory({ list, fillPostForm, width, size }) {
   const dropDownRef = useRef(null);
   const [category, setCategory] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +80,9 @@ function DropdownCategory({ list, fillPostForm, width, small }) {
       return (
         <Li
           key={id}
-          className={small && 'small'}
+          className={
+            (size === 'small' && 'small') || (size === 'large' && 'large')
+          }
           onClick={() => onCategoryClickHandler(id, category)}
         >
           {category}
@@ -97,12 +100,18 @@ function DropdownCategory({ list, fillPostForm, width, small }) {
   return (
     <Wrapper
       ref={dropDownRef}
+      className={(size === 'small' && 'small') || (size === 'large' && 'large')}
       onClick={() => setIsOpen(!isOpen)}
-      className={small && 'small'}
     >
       <span>{category ? category : '카테고리'}</span>
       <span> ▼ </span>
-      <Ul className={small && 'small'}>{isOpen && showCategoryList()}</Ul>
+      <Ul
+        className={
+          (size === 'small' && 'small') || (size === 'large' && 'large')
+        }
+      >
+        {isOpen && showCategoryList()}
+      </Ul>
     </Wrapper>
   );
 }

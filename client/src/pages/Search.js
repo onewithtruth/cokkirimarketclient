@@ -79,14 +79,10 @@ function Search() {
       {postList.length > 0 ? (
         <PostList posts={postList}></PostList>
       ) : (
-        <Indicator noResult>검색 결과가 없습니다!</Indicator>
+        <Indicator type='search'>검색 결과가 없습니다!</Indicator>
       )}
     </main>
   );
 }
-
-const NoResultIndicator = styled(Indicator)`
-  background-color: pink;
-`;
 
 export default Search;
