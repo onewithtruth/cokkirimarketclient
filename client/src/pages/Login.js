@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,6 +32,7 @@ const Login = ({
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
+  const [flag, setFlag] = useState('');
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
   };
@@ -156,9 +157,28 @@ const Login = ({
       .catch((err) => null);
   };
 
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    const options = {
+      method: 'post',
+      url: 'https://api.cokkirimarket.xyz/user/login',
+      data: loginInfo,
+      withCredentials: true
+    };
+
+    axios(options).then((res) => {
+      handleResponseSuccess(loginInfo.email);
+      setAccessToken(res.data.accessToken);
+      navigate('/mypage');
+      getUserInfo(res.data.accessToken);
+      setNickname(res.data.userInfo.nickname);
+    });
+  }, [flag]);
+
   const handleTestLogin = () => {
-    setLoginInfo({ email: 'test@test.com', password: 'd' });
-    handleLogin();
+    setLoginInfo({ email: 'test@test.com', password: 'd' }, () => {});
+    setFlag(1);
   };
 
   return (

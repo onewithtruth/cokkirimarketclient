@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NavLoginContainer = styled.div`
   /* display: inline; */
@@ -6,21 +6,21 @@ export const NavLoginContainer = styled.div`
 
 export const LoginTitle = styled.div`
   margin-top: 3px;
-  color : #323232;
+  color: #323232;
   font-family: Nanum Barun Gothic;
-  font-size : 9px;
+  font-size: 12px;
   font-weight: bold;
 `;
 
 export const LoginIcon = styled.img`
-  color : #323232;
+  color: #323232;
   height: 20px;
 `;
 
 const NavLogin = () => {
   return (
     <NavLoginContainer>
-      <LoginIcon src="/icons/join.png"/>
+      <LoginIcon src='/icons/join.png' />
       <LoginTitle>로그인</LoginTitle>
     </NavLoginContainer>
   );
