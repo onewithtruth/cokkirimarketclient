@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     margin-top: 50px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
     position: relative;
   }
 `;

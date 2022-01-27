@@ -6,6 +6,8 @@ import PostFormData from '../components/PostFormData';
 import { useNavigate } from 'react-router-dom';
 
 function Add({ accessToken }) {
+  const COKKIRI_IMG_SRC =
+    'https://imagedelivery.net/BOKuAiJyROlMLXwCcBYMqQ/317e8bf6-67b6-493f-b1ea-122bfe042c00/thumbnail';
   const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState([]);
   const [postForm, setPostForm] = useState({
@@ -17,7 +19,6 @@ function Add({ accessToken }) {
   });
 
   useEffect(() => {
-    console.log(accessToken);
     getCategoryList();
   }, []);
 
@@ -28,6 +29,10 @@ function Add({ accessToken }) {
       console.log(postForm);
       console.log('try again');
       return;
+    }
+    /* 이미지 없으면 코끼리 넣음 */
+    if (!postForm.image_src) {
+      postForm.image_src = COKKIRI_IMG_SRC;
     }
     console.log(postForm);
     postPostDataForm(postForm);

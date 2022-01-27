@@ -63,6 +63,24 @@ function PostListItem({ info }) {
     ? info.post_has_categories[0].category.category
     : '없음';
 
+  const priceFormatter = (price) => {
+    let result = '';
+    let count = 0;
+
+    if (price.length % 3 > 0) {
+      result = price.slice(0, price.length % 3) + ',';
+    }
+
+    let slicedPrice = price.slice(price.length % 3);
+
+    for (let i = 0; i < slicedPrice.length; i++) {
+      count++;
+      result += slicedPrice[i];
+      if (i < slicedPrice.length - 1 && count % 3 === 0) result += ',';
+    }
+    return result + ' 원';
+  };
+
   return (
     <StLink to={`/list/${info.id}`}>
       <PostItemWrapper>
@@ -72,7 +90,7 @@ function PostListItem({ info }) {
         <PostInfo>
           <PostTitle>{info.title}</PostTitle>
           <PostCategory>{category}</PostCategory>
-          <PostPrice>{info.price + ' 원'}</PostPrice>
+          <PostPrice>{priceFormatter(info.price)}</PostPrice>
         </PostInfo>
       </PostItemWrapper>
     </StLink>

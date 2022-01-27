@@ -5,7 +5,7 @@ import NavSearch from './Nav/NavSearch';
 import NavLogin from './Nav/NavLogin';
 import NavMyPage from './Nav/NavMyPage';
 import NavChat from './Nav/NavChat';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const NavContainer = styled.div`
   text-decoration-line: none;
@@ -30,32 +30,37 @@ export const NavTitle = styled.div`
 `;
 
 const Nav = ({ isLogin }) => {
+  const { pathname } = useLocation();
+  const page = pathname.split('/')[1];
+
   return (
-    <>
-      <NavContainer>
-        <Link to='/ ' style={{ textDecoration: 'none' }}>
-          <NavList />
-        </Link>
-        <Link to='/search' style={{ textDecoration: 'none' }}>
-          <NavSearch />
-        </Link>
-        {isLogin ? null : (
-          <Link to='/login' style={{ textDecoration: 'none' }}>
-            <NavLogin />
+    page !== 'chat' && (
+      <>
+        <NavContainer>
+          <Link to='/ ' style={{ textDecoration: 'none' }}>
+            <NavList />
           </Link>
-        )}
-        {isLogin ? (
-          <Link to='/chatroomlist' style={{ textDecoration: 'none' }}>
-            <NavChat />
+          <Link to='/search' style={{ textDecoration: 'none' }}>
+            <NavSearch />
           </Link>
-        ) : null}
-        {isLogin ? (
-          <Link to='/mypage' style={{ textDecoration: 'none' }}>
-            <NavMyPage />
-          </Link>
-        ) : null}
-      </NavContainer>
-    </>
+          {isLogin ? null : (
+            <Link to='/login' style={{ textDecoration: 'none' }}>
+              <NavLogin />
+            </Link>
+          )}
+          {isLogin ? (
+            <Link to='/chatroomlist' style={{ textDecoration: 'none' }}>
+              <NavChat />
+            </Link>
+          ) : null}
+          {isLogin ? (
+            <Link to='/mypage' style={{ textDecoration: 'none' }}>
+              <NavMyPage />
+            </Link>
+          ) : null}
+        </NavContainer>
+      </>
+    )
   );
 };
 

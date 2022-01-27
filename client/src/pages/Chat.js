@@ -93,7 +93,7 @@ function Chat({ userId, nickname }) {
   };
 
   return (
-    <main>
+    <Main>
       <Wrapper>
         <ChatLogUl>{renderChat()}</ChatLogUl>
         <ChatInputWrapper>
@@ -109,15 +109,21 @@ function Chat({ userId, nickname }) {
               ref={inputRef}
               onChange={(e) => setCurrentMessage(e.target.value)}
             ></TextInput>
-            <SubmitBtn>전송</SubmitBtn>
+            <SubmitBtn>
+              <Icon src='/icons/search.png' alt='' />
+            </SubmitBtn>
           </Form>
         </ChatInputWrapper>
       </Wrapper>
-    </main>
+    </Main>
   );
 }
 
-const Wrapper = styled.main`
+const Main = styled.main`
+  margin-bottom: 3rem;
+`;
+
+const Wrapper = styled.div`
   margin-top: 50px;
   margin-bottom: 60px;
   position: relative;
@@ -177,12 +183,11 @@ const Message = styled.span`
 `;
 
 const ChatInputWrapper = styled.div`
-  height: 60px;
+  height: 2.5rem;
   width: 100%;
-  background-color: grey;
+  background-color: ${({ theme }) => theme.colors.grey2};
   position: fixed;
   bottom: 0;
-  z-index: 999;
 `;
 
 const Form = styled.form`
@@ -194,13 +199,22 @@ const Form = styled.form`
 const TextInput = styled.input`
   height: 100%;
   width: 90%;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey};
 `;
 
 const SubmitBtn = styled.button`
-  margin-top: 20px;
   padding: 2px 5px;
-  background: white;
+  margin: 0 0.2rem;
+  background: transparent;
   border-radius: 10px;
+  border: none;
+`;
+
+const Icon = styled.img`
+  height: 100%;
+  width: 100%;
 `;
 
 export default Chat;

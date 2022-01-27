@@ -17,7 +17,7 @@ const ChatRoomList = ({ userId, userInfo }) => {
     const payload = {
       user_id: userId
     };
-
+  
     const options = {
       method: 'POST',
       url: 'https://api.cokkirimarket.xyz/socket/chatroomlist',

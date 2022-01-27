@@ -1,76 +1,40 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 import DropdownCategory from './common/DropdownCategory';
-
-const FormWrapper = styled.div`
-  width: 100%;
-  height: 90vh;
-  padding: 2rem 0;
-  margin: 50px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.grey_light};
-`;
-
-const ImgWrapper = styled.div`
-  width: 100%;
-  margin: 3rem 0 1rem 0;
-  display: flex;
-  justify-content: center;
-`;
-
-const preview = css`
-  background-color: white;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
-  border-radius: 1rem;
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
-`;
-
-const PreviewDiv = styled.div`
-  ${preview};
-  width: 60%;
-  height: 12rem;
-`;
-
-const PreviewImg = styled.img`
-  ${preview}
-  width:100%;
-  height: 100%;
-`;
-
-export const SingleInput = styled.input`
-  width: 85%;
-  height: 3rem;
-  padding: 0 5%;
-  margin-bottom: 1rem;
-  border-radius: 30px;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
-`;
-
-const FileInput = styled(SingleInput)`
-  display: none;
-`;
-
-const Textarea = styled.textarea`
-  width: 85%;
-  height: 15rem;
-  padding: 5%;
-  border-radius: 30px;
-  border: 1px solid ${({ theme }) => theme.colors.grey};
-  border-radius: 30px;
-  box-shadow: 1px 1px 10px -5px ${({ theme }) => theme.colors.blue_base};
-`;
+import Indicator from './common/Indicator';
 
 function PostFormData({ fillPostForm, categoryList, postForm }) {
   const fileRef = useRef(null);
+  const priceRef = useRef(null);
   const [preview, setPreview] = useState('');
+  const [isImgLoading, setIsImgLoading] = useState(false);
 
-  const previewHandler = (e) => {
+  const previewUploader = (e) => {
     const uploadFile = e.target.files[0];
     getCloudUrl(uploadFile);
+    setIsImgLoading(true);
+  };
+
+  const previewHandler = (e) => {
+    if (!preview) {
+      if (isImgLoading) {
+        return <Indicator type='postForm'>로딩중</Indicator>;
+      } else if (postForm.image_src) {
+        return <PreviewImg src={postForm.image_src}></PreviewImg>;
+      } else {
+        return <Indicator type='postForm'>이미지를 등록해주세요</Indicator>;
+      }
+    } else {
+      return <PreviewImg src={preview}></PreviewImg>;
+    }
+  };
+
+  const priceHandler = (e) => {
+    const price = e.target.value;
+    if (price.length > 12) {
+      priceRef.current.value = postForm.price;
+    } else fillPostForm({ price });
   };
 
   const getCloudUrl = (uploadFile) => {
@@ -107,6 +71,7 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
         const image_src = res.data.result.variants[0];
         fillPostForm({ image_src });
         setPreview(image_src);
+        setIsImgLoading(false);
         console.log(preview);
       })
       .catch(console.log);
@@ -114,21 +79,25 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
 
   console.log(postForm);
 
+  /* 
+  A. 이미지가 없ㅇ르 때 
+    1. 없다고 알려주는 컴포넌트 반환
+    2. 대체 링크로 코끼리 전송
+  B. 이미지 수정시에 postForm.image_src에서 내려 받아서 띄워주기
+    <PreviewImg src={postForm.image_src}></PreviewImg>
+*/
+
   return (
     <FormWrapper>
       <ImgWrapper>
         <PreviewDiv onClick={() => fileRef.current.click()}>
-          {preview ? (
-            <PreviewImg src={preview}></PreviewImg>
-          ) : (
-            <PreviewImg src={postForm.image_src}></PreviewImg>
-          )}
+          {previewHandler()}
         </PreviewDiv>
         <FileInput
           type='file'
           ref={fileRef}
           accept='.jpeg, .jpg, .png'
-          onChange={previewHandler}
+          onChange={previewUploader}
         />
       </ImgWrapper>
       <SingleInput
@@ -144,11 +113,13 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
         list={categoryList}
         fillPostForm={fillPostForm}
         width='85%'
+        size='large'
       ></DropdownCategory>
       <SingleInput
         type='number'
+        ref={priceRef}
         placeholder='가격을 입력하세요'
-        onChange={(e) => fillPostForm({ price: e.target.value })}
+        onChange={priceHandler}
         defaultValue={postForm.price}
       />
       <Textarea
@@ -159,5 +130,62 @@ function PostFormData({ fillPostForm, categoryList, postForm }) {
     </FormWrapper>
   );
 }
+
+const FormWrapper = styled.div`
+  width: 100%;
+  height: 90vh;
+  padding: 2rem 0;
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  margin: 3rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const preview = css`
+  background-color: white;
+  border-radius: 1rem;
+`;
+
+const PreviewDiv = styled.div`
+  ${preview};
+  width: 60%;
+  height: 12rem;
+  border: 1px solid ${({ theme }) => theme.colors.grey};
+`;
+
+const PreviewImg = styled.img`
+  ${preview}
+  width:100%;
+  height: 100%;
+`;
+
+const SingleInput = styled.input`
+  width: 85%;
+  height: 3rem;
+  padding: 0 5%;
+  margin-bottom: 1rem;
+  border-radius: 30px;
+  border: 1px solid ${({ theme }) => theme.colors.grey};
+`;
+
+const FileInput = styled(SingleInput)`
+  display: none;
+`;
+
+const Textarea = styled.textarea`
+  width: 85%;
+  height: 15rem;
+  padding: 5%;
+  border-radius: 30px;
+  border: 1px solid ${({ theme }) => theme.colors.grey};
+  border-radius: 30px;
+`;
 
 export default PostFormData;

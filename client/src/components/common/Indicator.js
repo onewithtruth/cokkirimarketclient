@@ -6,15 +6,17 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  &.noResult {
+  &.search {
     margin: 2rem 1rem;
+  }
+
+  &.postForm {
+    height: 100%;
   }
 `;
 
 function Indicator(props) {
-  return (
-    <Wrapper className={props.noResult && 'noResult'}>{props.children}</Wrapper>
-  );
+  return <Wrapper className={props.type}>{props.children}</Wrapper>;
 }
 
 export default Indicator;

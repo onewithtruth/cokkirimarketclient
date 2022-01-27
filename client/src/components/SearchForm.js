@@ -19,7 +19,7 @@ function SearchForm({ fillPostForm, submitPostForm, categoryList }) {
       <DropdownCategory
         list={categories}
         fillPostForm={fillPostForm}
-        small
+        size='small'
       ></DropdownCategory>
       <Searchbar
         fillPostForm={fillPostForm}
