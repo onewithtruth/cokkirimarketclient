@@ -105,7 +105,7 @@ const Login = ({
         setUserInfo(response.data.data.email);
         navigate('/mypage');
         getUserInfo(response.data.data.accessToken);
-        setNickname(response.data.userInfo.nickname);
+        setNickname(response.data.data.nickname);
       })
       .catch((err) => null);
   };
@@ -128,7 +128,7 @@ const Login = ({
         setUserInfo(response.data.data.email);
         navigate('/mypage');
         getUserInfo(response.data.data.accessToken);
-        setNickname(response.data.userInfo.nickname);
+        setNickname(response.data.data.nickname);
       })
       .catch((err) => null);
   };
@@ -151,7 +151,7 @@ const Login = ({
         setUserInfo(response.data.data.email);
         setIsLogin(true);
         navigate('/mypage');
-        setNickname(response.data.userInfo.nickname);
+        setNickname(response.data.data.nickname);
       })
       .catch((err) => null);
   };
