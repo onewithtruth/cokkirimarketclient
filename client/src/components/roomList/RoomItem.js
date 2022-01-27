@@ -44,7 +44,7 @@ const PostTitle = styled.h2`
   // -webkit-box-orient: vertical;
   // -webkit-line-clamp: 1;
   // overflow: hidden;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.blue_dark};
 `;
@@ -52,14 +52,30 @@ const PostTitle = styled.h2`
 const PostPrice = styled.span`
   color: ${({ theme }) => theme.colors.blue_dark};
   // font-size: 1.2rem;
-  font-size: 10px;
+  font-size: 0.7rem;
   font-weight: 700;
 `;
 
 function RoomItem({ info, userInfo }) {
   const navigate = useNavigate();
-  // console.log(info);
-  // console.log(userInfo);
+  console.log(info);
+  console.log(userInfo);
+  let my = userInfo.split('@')[0];
+  const seller = info.post_id_post_post_has_chats[0].user.nickname;
+  const buyer = info.user.nickname;
+  const title = info.post_id_post_post_has_chats[0].title;
+
+  console.log('my', my);
+  console.log('seller', seller);
+  console.log('buyer', buyer);
+  console.log('title', title);
+
+  let name;
+
+  if (my === seller) name = buyer;
+  else name = seller;
+
+  console.log('my', my);
 
   let postId = info.room.split('#');
   let room = info.room;
@@ -79,8 +95,8 @@ function RoomItem({ info, userInfo }) {
     >
       <PostImg src={img_src ? img_src : './icons/elephant.png'} />
       <PostInfo>
-        <PostTitle>{}</PostTitle>
-        <PostPrice>{}</PostPrice>
+        <PostTitle>{title}</PostTitle>
+        <PostPrice>{name}</PostPrice>
       </PostInfo>
     </PostItemWrapper>
   );

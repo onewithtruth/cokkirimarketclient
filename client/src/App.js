@@ -9,6 +9,8 @@ import axios from 'axios';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import { Modal } from './components/common/Modal';
+import SmallButton from './components/common/SmallButton';
+import styled, { css } from 'styled-components';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -34,13 +36,22 @@ function App() {
   };
 
   const handleLogout = () => {
+    setShowModal(true);
+    setModalMsg('로그아웃 되었습니다');
+    setUserInfo(null);
+    setIsLogin(false);
+    setAccessToken('');
+    navigate('/login');
+
     axios
       .get('https://api.cokkirimarket.xyz/user/logout', {
         headers: {
           Authorization: 'Bearer ' + accessToken
-        }
+        },
+        withCredentials: true
       })
       .then((res) => {
+        console.log(res);
         setShowModal(true);
         setModalMsg('로그아웃 되었습니다');
         setUserInfo(null);
@@ -49,6 +60,7 @@ function App() {
         navigate('/login');
       })
       .catch((err) => {
+        console.log(err);
         if (err.response.status === 401) {
           setShowModal(true);
           setModalMsg('로그아웃 되었습니다');
