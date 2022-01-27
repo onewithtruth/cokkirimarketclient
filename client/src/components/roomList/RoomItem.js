@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Modal } from '../common/Modal';
 
 const StLink = styled(Link)`
@@ -57,46 +57,32 @@ const PostPrice = styled.span`
 `;
 
 function RoomItem({ info, userInfo }) {
-  let id;
+  const navigate = useNavigate();
+  // console.log(info);
+  // console.log(userInfo);
 
-  if (userInfo.length > 0) {
-    id = userInfo.split('@')[0];
-  } else {
-    id = userInfo;
-  }
+  let postId = info.room.split('#');
+  let room = info.room;
 
-  console.log(info);
+  console.log('postId', postId);
+  console.log('room', room);
 
-  // console.log(info.user.nickname);
-  const postId = info.id;
-  // const buyer = info.chat_id_chats[0].room.split('#')[1].split('@')[0];
-  const buyer = info.room.split('#')[1].split('@')[0];
-  const buyerEmail = info.room.split('#')[1];
-  // const buyer = info.room.split('#')[1].split('@')[0];
-  const seller = info.post_id_post_post_has_chats[0].user.nickname;
   const img_src = info.post_id_post_post_has_chats[0].image_src;
-
-  console.log('id', id);
-  console.log('seller', seller);
-  console.log('buyer', buyer);
-
-  if (id !== seller) id = seller;
-  else id = buyer;
-
-  console.log('id', id);
-  console.log('seller', seller);
-  console.log('buyer', buyer);
+  console.log('final', info.post_id_post_post_has_chats[0].user_id);
+  const postUserId = info.post_id_post_post_has_chats[0].user_id;
 
   return (
-    <StLink to={`/chat/${postId}#${buyerEmail}`}>
-      <PostItemWrapper>
-        <PostImg src={img_src ? img_src : './icons/elephant.png'} />
-        <PostInfo>
-          <PostTitle>{info.title}</PostTitle>
-          <PostPrice>{id}</PostPrice>
-        </PostInfo>
-      </PostItemWrapper>
-    </StLink>
+    <PostItemWrapper
+      onClick={() =>
+        navigate(`/chat/${room}`, { state: { postUserId: postUserId } })
+      }
+    >
+      <PostImg src={img_src ? img_src : './icons/elephant.png'} />
+      <PostInfo>
+        <PostTitle>{}</PostTitle>
+        <PostPrice>{}</PostPrice>
+      </PostInfo>
+    </PostItemWrapper>
   );
 }
 

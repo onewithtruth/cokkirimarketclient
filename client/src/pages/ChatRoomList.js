@@ -10,11 +10,14 @@ const ChatRoomList = ({ userId, userInfo }) => {
     chatListCallerforChatComponent();
   }, []);
 
+  console.log('userId', userId);
+  console.log('userInfo', userInfo);
+
   const chatListCallerforChatComponent = async () => {
     const payload = {
       user_id: userId
     };
-
+  
     const options = {
       method: 'POST',
       url: 'https://api.cokkirimarket.xyz/socket/chatroomlist',

@@ -7,6 +7,9 @@ import axios from 'axios';
 const socket = io.connect('https://api.cokkirimarket.xyz');
 
 function Chat({ userId, nickname }) {
+  console.log('userId in chat.js', userId);
+  console.log('nickname in chat.js', nickname);
+
   const { pathname, hash, state } = useLocation();
   const postId = pathname.split('/')[2];
   const room = postId + hash;
@@ -20,6 +23,7 @@ function Chat({ userId, nickname }) {
     joinRoom();
     socket.on('receive_message', (data) => {
       console.log(data);
+      console.log('messageList in chat.js', messageList);
       setMessageList((list) => [...list, data]);
     });
   }, []);
