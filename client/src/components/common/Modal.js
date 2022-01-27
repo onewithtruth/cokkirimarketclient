@@ -9,6 +9,7 @@ export const ModalBackdrop = styled.div`
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  font-family: Nanum Barun Gothic;
   display: grid;
   place-items: center;
 `;

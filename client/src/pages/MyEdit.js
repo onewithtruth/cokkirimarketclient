@@ -68,6 +68,7 @@ const MyEdit = ({ isLogin, accessToken, setShowModal, setModalMsg }) => {
       headers: {
         Authorization: 'Bearer ' + accessToken
       },
+      withCredentials: true,
       data: data
     };
 

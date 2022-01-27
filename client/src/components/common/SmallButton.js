@@ -22,6 +22,7 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.blue_base};
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.2rem;
+  font-family: Nanum Barun Gothic;
 `;
 
 function SmallButton(props) {

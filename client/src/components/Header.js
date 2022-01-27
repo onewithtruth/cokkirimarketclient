@@ -55,9 +55,7 @@ function Header({ isLogin }) {
       </Wrapper>
       <LogoWrapper>
         <Icon src='/icons/elephant.png' onClick={() => navigate('/')} />
-        (10:11)
       </LogoWrapper>
-
       <HeaderMenuContainer>
         {/* <Link to='/ ' style={{ textDecoration: 'none' }}>
           <NavList />
