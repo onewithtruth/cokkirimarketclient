@@ -44,15 +44,14 @@ const PostTitle = styled.h2`
   // -webkit-box-orient: vertical;
   // -webkit-line-clamp: 1;
   // overflow: hidden;
-  font-size: 0.8rem;
+  font-size: 14px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.blue_dark};
 `;
 
 const PostPrice = styled.span`
   color: ${({ theme }) => theme.colors.blue_dark};
-  // font-size: 1.2rem;
-  font-size: 0.7rem;
+  font-size: 12px;
   font-weight: 700;
 `;
 
