@@ -124,12 +124,12 @@ const MyPage = ({
 
         <MyPageMenu onClick={handleLogout}>
           <MyMenuIcon src='/icons/logout.png' />
-          로그아웃 하기
+          로그아웃
         </MyPageMenu>
 
         <MyPageMenu onClick={handleSignout}>
           <MyMenuIcon src='/icons/cancel.png' />
-          회원탈퇴 하기
+          회원탈퇴
         </MyPageMenu>
       </MyPageContainer>
     </main>
